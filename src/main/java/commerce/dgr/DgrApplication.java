@@ -1,4 +1,4 @@
-package ecommerce.dgr;
+package commerce.dgr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
