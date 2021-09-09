@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ItemCarrinho {
-    private Long codigoCarrinho;
+    private Long codigoProduto;
     private Integer quantidade;
 }

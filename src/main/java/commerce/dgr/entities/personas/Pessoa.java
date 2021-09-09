@@ -1,5 +1,6 @@
 package commerce.dgr.entities.personas;
 
+import commerce.dgr.entities.AbstractEntity;
 import commerce.dgr.enums.TipoAcesso;
 import commerce.dgr.enums.TipoGenero;
 import lombok.Getter;
@@ -11,10 +12,8 @@ import javax.persistence.*;
 @Table(name = "tb_pessoas")
 @Getter
 @Setter
-public class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Pessoa extends AbstractEntity {
+
     private String nome;
     private String cpfCnpj;
     private String telefone;
