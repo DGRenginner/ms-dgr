@@ -1,8 +1,8 @@
 package commerce.dgr.entities.personas;
 
 import commerce.dgr.entities.AbstractEntity;
-import commerce.dgr.enums.TipoAcesso;
-import commerce.dgr.enums.TipoGenero;
+import commerce.dgr.enums.TipoAcessoEnum;
+import commerce.dgr.enums.TipoGeneroEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +18,9 @@ public class Pessoa extends AbstractEntity {
     private String cpfCnpj;
     private String telefone;
     private String email;
-    private TipoGenero tipoGenero;
+    private TipoGeneroEnum tipoGeneroEnum;
 
     private String login;
     private String senha;
-    private TipoAcesso tipoAcesso;
+    private TipoAcessoEnum tipoAcessoEnum;
 }

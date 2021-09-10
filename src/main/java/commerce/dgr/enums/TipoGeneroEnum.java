@@ -1,12 +1,12 @@
 package commerce.dgr.enums;
 
-public enum TipoGenero {
+public enum TipoGeneroEnum {
     MASCULINO("M"),
     FEMININO("F");
 
     public String tipo;
 
-    TipoGenero(String tipo) {
+    TipoGeneroEnum(String tipo) {
         this.tipo = tipo;
     }
 }
