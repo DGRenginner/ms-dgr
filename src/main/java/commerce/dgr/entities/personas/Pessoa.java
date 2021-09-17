@@ -14,13 +14,17 @@ import javax.persistence.*;
 @Setter
 public class Pessoa extends AbstractEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String nome;
     private String cpfCnpj;
     private String telefone;
     private String email;
-    private TipoGeneroEnum tipoGeneroEnum;
+    private TipoGeneroEnum tipoGenero;
 
     private String login;
     private String senha;
-    private TipoAcessoEnum tipoAcessoEnum;
+    private TipoAcessoEnum tipoAcesso;
 }

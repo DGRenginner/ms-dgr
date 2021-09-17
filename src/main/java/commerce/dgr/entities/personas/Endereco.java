@@ -1,5 +1,6 @@
-package commerce.dgr.entities;
+package commerce.dgr.entities.personas;
 
+import commerce.dgr.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 

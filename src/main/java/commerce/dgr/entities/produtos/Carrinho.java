@@ -10,6 +10,5 @@ import java.util.List;
 @Setter
 public class Carrinho extends AbstractEntity {
 
-    private Long codigoCliente;
     private List<ItemCarrinho> itensCarrinho;
 }

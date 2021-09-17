@@ -1,8 +1,9 @@
 package commerce.dgr.entities.produtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
 import commerce.dgr.entities.AbstractEntity;
-import commerce.dgr.entities.Endereco;
-import commerce.dgr.entities.personas.Pessoa;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,11 +15,28 @@ import java.math.BigDecimal;
 @Table(name = "tb_produtos")
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Produto extends AbstractEntity {
-	private String nome;
-	private String descricao;
-	private String marca;
-	private BigDecimal preco;
-	private boolean promocao;
-	private String urlImagem;
+
+    @JsonProperty("nome")
+    @NotNull
+    private String nome;
+
+    @JsonProperty("descricao")
+    private String descricao;
+
+    @NotNull
+    @JsonProperty("marca")
+    private String marca;
+
+    @JsonProperty("preco")
+    @NotNull
+    private BigDecimal preco;
+
+    @JsonProperty("promocao")
+    private boolean promocao;
+
+    @JsonProperty("urlImagem")
+    @NotNull
+    private String urlImagem;
 }

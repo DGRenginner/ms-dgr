@@ -1,4 +1,4 @@
-package commerce.dgr.entities.produtos;
+package commerce.dgr.entities.pagamento;
 
 import commerce.dgr.entities.AbstractEntity;
 import lombok.Getter;
