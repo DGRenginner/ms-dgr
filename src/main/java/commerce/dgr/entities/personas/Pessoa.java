@@ -18,13 +18,25 @@ public class Pessoa extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "cpfCnpj")
     private String cpfCnpj;
+    @Column(name = "telefone")
     private String telefone;
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "tipoGenero")
+    @Enumerated(EnumType.STRING)
     private TipoGeneroEnum tipoGenero;
 
+    @Column(name = "login")
     private String login;
+    @Column(name = "senha")
     private String senha;
+
+    @Column(name = "tipoAcesso")
+    @Enumerated(EnumType.STRING)
     private TipoAcessoEnum tipoAcesso;
 }

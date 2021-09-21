@@ -2,6 +2,7 @@ package commerce.dgr.controller;
 
 import commerce.dgr.entities.pedidos.Pedido;
 import commerce.dgr.repository.PedidoRepository;
+import commerce.dgr.services.BuscarPedidosClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,12 @@ import java.util.Optional;
 @RequestMapping("pedidos")
 public class PedidoController {
 
+    private final BuscarPedidosClienteService pedidosClienteService;
     private final PedidoRepository pedidoRepository;
 
     @Autowired
-    public PedidoController(PedidoRepository pedidoRepository) {
+    public PedidoController(BuscarPedidosClienteService pedidosClienteService, PedidoRepository pedidoRepository) {
+        this.pedidosClienteService = pedidosClienteService;
         this.pedidoRepository = pedidoRepository;
     }
 
@@ -32,7 +35,7 @@ public class PedidoController {
 
     @GetMapping(path = "/buscarPedidosCliente/codigoCliente={codigoCliente}")
     public ResponseEntity<List<Pedido>> buscarPedidosCliente(@PathVariable("codigoCliente") Long codigoCliente) {
-        Iterable<Pedido> pedidos = pedidoRepository.findByCodigoCliente(codigoCliente);
+        Iterable<Pedido> pedidos = pedidosClienteService.consultarPedidosPorCliente(codigoCliente);
         if (!pedidos.iterator().hasNext()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
