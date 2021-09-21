@@ -1,11 +1,12 @@
 package commerce.dgr.entities.produtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.sun.istack.NotNull;
 import commerce.dgr.entities.AbstractEntity;
-import commerce.dgr.entities.Endereco;
-import commerce.dgr.entities.personas.Pessoa;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -14,11 +15,27 @@ import java.math.BigDecimal;
 @Table(name = "tb_produtos")
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Produto extends AbstractEntity {
-	private String nome;
-	private String descricao;
-	private String marca;
-	private BigDecimal preco;
-	private boolean promocao;
-	private String urlImagem;
+
+    @NotNull
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "descricao")
+    private String descricao;
+
+    @NotNull
+    @Column(name = "marca")
+    private String marca;
+
+    @Column(name = "preco")
+    @NotNull
+    private BigDecimal preco;
+
+    @Column(name = "promocao")
+    private boolean promocao;
+
+    @Column(name = "urlImagem")
+    private String urlImagem;
 }

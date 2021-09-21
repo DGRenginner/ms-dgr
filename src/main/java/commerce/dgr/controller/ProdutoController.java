@@ -2,6 +2,7 @@ package commerce.dgr.controller;
 
 import commerce.dgr.entities.produtos.Produto;
 import commerce.dgr.repository.ProdutoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @RestController
-@RequestMapping("produtos/")
+@RequestMapping("produtos")
 public class ProdutoController {
 
     private final ProdutoRepository produtoRepository;
@@ -55,4 +56,10 @@ public class ProdutoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping(path = "/criarProdutos")
+    public ResponseEntity<?> criarProdutos(@RequestBody List<Produto> produtoList) {
+        log.info(String.valueOf(produtoList));
+        produtoRepository.saveAll(produtoList);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

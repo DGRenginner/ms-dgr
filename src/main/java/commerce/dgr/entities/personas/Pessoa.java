@@ -1,7 +1,8 @@
 package commerce.dgr.entities.personas;
 
-import commerce.dgr.enums.TipoAcesso;
-import commerce.dgr.enums.TipoGenero;
+import commerce.dgr.entities.AbstractEntity;
+import commerce.dgr.enums.TipoAcessoEnum;
+import commerce.dgr.enums.TipoGeneroEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,17 +12,31 @@ import javax.persistence.*;
 @Table(name = "tb_pessoas")
 @Getter
 @Setter
-public class Pessoa {
+public class Pessoa extends AbstractEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
-    private String cpfCnpj;
-    private String telefone;
-    private String email;
-    private TipoGenero tipoGenero;
 
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "cpfCnpj")
+    private String cpfCnpj;
+    @Column(name = "telefone")
+    private String telefone;
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "tipoGenero")
+    @Enumerated(EnumType.STRING)
+    private TipoGeneroEnum tipoGenero;
+
+    @Column(name = "login")
     private String login;
+    @Column(name = "senha")
     private String senha;
-    private TipoAcesso tipoAcesso;
+
+    @Column(name = "tipoAcesso")
+    @Enumerated(EnumType.STRING)
+    private TipoAcessoEnum tipoAcesso;
 }
