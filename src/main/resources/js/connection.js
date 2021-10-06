@@ -1,31 +1,14 @@
-fetch("")
-.then(response => response.json())
-.then(json => {
-    console.log(json);
-})
+var cors = require('cors')
 
-const Pessoas = {
-    id: "",
-    nome: "Giovanni",
-    cpfCnpj: "49490467804",
-    telefone: "11971288482",
-    email: "projetointer12021@gmail.com",
-    tipoGenero: "Macho alfa",
-    login: "admin",
-    senha: "admin",
-    tipoAcesso: "funcionário"
-};
+app.use(cors())
 
-fetch("", {
-    method: "GET",
-    mode: "",
-    cache: "",
-    credentials: "same-origin",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    redirect: "follow",
-    referrer: "no-referrer",
-    body: JSON.stringify(Pessoas)
-});
+const requisicao = fetch("http://localhost:8081/pessoas/3")
+
+.then(response => {
+  return response.json();
+ })
+ .then(jsonpessoas =>{
+     console.log(jsonpessoas)
+ });  
+console.log(requisicao);
 
