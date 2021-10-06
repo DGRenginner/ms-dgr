@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Valide seu cartão</title>
+        <link rel="stylesheet" type="text/css" href="./estilo/pay.css">
+    </head>
+    <body>
+        <div class="pagamento">
+            <div class="bg"></div>
+            <div class="card">
+            <img src="./img/chip.png" class="chip">
+            <div class="logo"></div>
+            <h2 class="bancoName" contenteditable="true">Banco
+                 Nome</h2>
+                 <form>
+                     <div class="inputBox">
+                         <span>Número do Cartão</span>
+                         <input type="text" placeholder="0123 4567 8901
+                         2345" maxlength="19">
+                     </div>  
+                     <div class="inputBox">
+                        <span>Titular do Cartão</span>
+                        <input type="text" placeholder="Giovanni Danilo Rayane">
+                    </div>
+                        <div class="group">
+                            <div class="inputBox">
+                                <span>Valido até</span>
+                                <input type="text" placeholder="MÊS/ANO
+                                " maxlength="5">
+                            </div>
+                            <div class="inputBox">
+                                <span>CCV</span>
+                                <input type="password" placeholder="***"
+                                 maxlength="3">
+                        </div>
+                    </div>
+                 </form>
+            </div>
+            
+            <a href="https://getbootstrap.com/docs/5.0/examples/checkout/" 
+            style="text-decoration:none" button class="btn">Validar Cartão</a>
+        </div>
+    </body>
+</html>

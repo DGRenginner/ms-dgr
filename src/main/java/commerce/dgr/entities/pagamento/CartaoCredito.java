@@ -16,19 +16,19 @@ public class CartaoCredito extends AbstractEntity {
     @Column(name = "codigoBarras")
     private String codigoBarras;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "nomeTitular")
     private String nomeTitular;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "numeroCartao")
     private String numeroCartao;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "cvv")
     @Nullable
     private String cvv;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "limiteDisponivel")
     private BigDecimal limiteDisponivel;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "dataVencimento")
     private Date dataVencimento;
 }
