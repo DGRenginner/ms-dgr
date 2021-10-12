@@ -27,10 +27,7 @@ public class PedidoController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Pedido> buscarPedidoPorId(@PathVariable("id") Long id) {
         Optional<Pedido> pedido = pedidoRepository.findById(id);
-        if (pedido.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(pedido.get(), HttpStatus.OK);
+        return pedido.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping(path = "/buscarPedidosCliente/codigoCliente={codigoCliente}")
