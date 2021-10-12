@@ -8,34 +8,46 @@
     <link rel="stylesheet" href="estilo/cadastro.css">
 </head>
 <body>
+    <script src="js/connection.js"></script>
     <div class="container">
         <div class="title">Registrar</div>
-        <form action="index.html">
+        
+        <form onsubmit="fazPost()">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Nome Completo</span>
-                    <input type="text" placeholder="Insira seu nome" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Usuário</span>
-                    <input type="text" placeholder="Insira seu usuário" required>
+                    <span class="details">CPF OU CNPJ</span>
+                    <input id="cpf_cnpj" type="text" placeholder="CPF OU CNPJ" required>
                 </div>
                 <div class="input-box">
                     <span class="details">E-mail</span>
-                    <input type="text" placeholder="Insira seu e-mail" required>
+                    <input id="email" type="text" placeholder="Insira seu e-mail" required>
                 </div>
                 <div class="input-box">
-                    <span class="details">Celular</span>
-                    <input type="text" placeholder="Insira seu número" required>
+                    <span class="details">login</span>
+                    <input id="login" type="text" placeholder="Insira seu login" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Nome Completo</span>
+                    <input id="nome" type="text" placeholder="Insira seu usuário" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Senha</span>
-                    <input type="password" placeholder="Insira sua Senha" required>
+                    <input id="senha" type="password" placeholder="Insira uma senha" required>
                 </div>
                 <div class="input-box">
-                    <span class="details">Confirmar Senha</span>
-                    <input type="password"  placeholder="Confirmar Senha" required>
+                    <span class="details">Celular</span>
+                    <input id="telefone" type="text" placeholder="Insira seu número" required>
                 </div>
+                <div class="input-box">
+                    <span class="details">Admin ou Cliente</span>
+                    <input id="tipo_acesso" type="text" placeholder="Insira o tipo" required>
+                </div>
+                <!--
+                <div class="input-box">
+                    <span class="details">Confirmar Senha</span>
+                    <input id="confirmasenha" type="password"  placeholder="Confirmar Senha" required>
+                </div>
+                -->
             </div>
             <div class="gender-details">
             <input type="radio" name="gender" id="dot-1">
