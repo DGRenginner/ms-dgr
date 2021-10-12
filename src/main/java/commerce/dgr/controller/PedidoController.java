@@ -27,9 +27,9 @@ public class PedidoController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Pedido> buscarPedidoPorId(@PathVariable("id") Long id) {
         Optional<Pedido> pedido = pedidoRepository.findById(id);
-        if (pedido.isEmpty()) {
+       /** if (pedido.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+        }*/
         return new ResponseEntity<>(pedido.get(), HttpStatus.OK);
     }
 
