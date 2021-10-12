@@ -23,9 +23,9 @@ public class PessoaController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Pessoa> getPessoaById(@PathVariable("id") Long id) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-       /** if (pessoa.isEmpty()) {
+        if (pessoa.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }*/
+        }
         return new ResponseEntity<>(pessoa.get(), HttpStatus.OK);
     }
 
