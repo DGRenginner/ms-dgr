@@ -59,7 +59,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <configuration>
                     <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* DgrApplication</web>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
                     </processTypes>
                 </configuration>
             </plugin>
