@@ -12,7 +12,7 @@
     <div class="container">
         <div class="title">Registrar</div>
         
-        <form onsubmit="fazPost()">
+        <form HTMLFormElement.onsubmit="cadastraUsuario()">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">CPF OU CNPJ</span>
@@ -35,6 +35,11 @@
                     <input id="senha" type="password" placeholder="Insira uma senha" required>
                 </div>
                 <div class="input-box">
+                    <span class="details">Confirmar Senha</span>
+                    <input id="confirmasenha" type="password"  placeholder="Confirmar Senha" required>
+                </div>
+                
+                <div class="input-box">
                     <span class="details">Celular</span>
                     <input id="telefone" type="text" placeholder="Insira seu número" required>
                 </div>
@@ -42,12 +47,8 @@
                     <span class="details">Admin ou Cliente</span>
                     <input id="tipo_acesso" type="text" placeholder="Insira o tipo" required>
                 </div>
-                <!--
-                <div class="input-box">
-                    <span class="details">Confirmar Senha</span>
-                    <input id="confirmasenha" type="password"  placeholder="Confirmar Senha" required>
-                </div>
-                -->
+                
+                
             </div>
             <div class="gender-details">
             <input type="radio" name="gender" id="dot-1">
