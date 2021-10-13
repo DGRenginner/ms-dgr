@@ -23,10 +23,7 @@ public class PessoaController {
     @GetMapping(path = "id={id}")
     public ResponseEntity<Pessoa> getPessoaById(@PathVariable("id") Long id) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-        if (pessoa.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(pessoa.get(), HttpStatus.OK);
+        return pessoa.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @PostMapping(path = "/criarPessoa")
