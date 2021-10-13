@@ -20,7 +20,7 @@ public class PessoaController {
         this.pessoaRepository = pessoaRepository;
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "id={id}")
     public ResponseEntity<Pessoa> getPessoaById(@PathVariable("id") Long id) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(id);
         return pessoa.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
@@ -36,7 +36,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaRepository.save(pessoa), HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/excluirPessoa/{id}")
+    @DeleteMapping(path = "/excluirPessoa/id={id}")
     public ResponseEntity<?> excluirPessoa(@PathVariable("id") Long id) {
         pessoaRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
