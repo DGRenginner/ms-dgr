@@ -25,10 +25,7 @@ public class ProdutoController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Produto> getProdutoById(@PathVariable("id") Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
-        if (produto.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(produto.get(), HttpStatus.OK);
+        return produto.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping
