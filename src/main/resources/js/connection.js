@@ -1,7 +1,7 @@
 function fazPost(url, body) {
 
   console.log("Body=", body) 
-    let request = new XMLHttpRequest(body)
+    var xhr = new XMLHttpRequest();
     request.open("post", url, true)
     request.setRequestHeader("Content-type", "application/json")
     request.send(JSON.stringify(body))
@@ -13,12 +13,12 @@ function fazPost(url, body) {
     return request.responseText
 }
  
-function cadastraUsuario(){
+xhr.onreadystatechance = function cadastraUsuario(){
 
 
 
   event.preventDefault()
-  let url = "https://ms-dgr.herokuapp.com/pessoas/criarPessoa" 
+  xhr.open("POST" , "https://ms-dgr.herokuapp.com/pessoas/criarPessoa") 
   let cpf_cnpj = document.getElementById("cpf_cnpj").value
   let email = document.getElementById("email").value
   let nome = document.getElementById("nome").value
