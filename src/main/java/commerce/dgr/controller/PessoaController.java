@@ -1,6 +1,7 @@
 package commerce.dgr.controller;
 
 import commerce.dgr.component.LoginComponent;
+import commerce.dgr.entities.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class PessoaController {
 
     @CrossOrigin
     @GetMapping(path = "/efetuarLogin")
-    public ResponseEntity<Pessoa> efetuarLogin(@RequestParam("email") String email, @RequestParam("senha") String senha) {
-        return new ResponseEntity<>(loginComponent.efetuarLoginPessoa(email, senha), HttpStatus.OK);
+    public ResponseEntity<Pessoa> efetuarLogin(@RequestBody LoginDTO loginDTO) {
+        return new ResponseEntity<>(loginComponent.efetuarLoginPessoa(loginDTO.getEmail(), loginDTO.getSenha()), HttpStatus.OK);
     }
 }
