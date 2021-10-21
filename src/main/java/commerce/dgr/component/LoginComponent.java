@@ -15,15 +15,15 @@ public class LoginComponent {
     private final PessoaRepository pessoaRepository;
 
     @SneakyThrows
-    public Pessoa efetuarLoginPessoa(Pessoa pessoa) {
-        Pessoa pessoaTemp = pessoaRepository.getPessoaByEmail(pessoa.getEmail());
+    public Pessoa efetuarLoginPessoa(String email, String senha) {
+        Pessoa pessoaTemp = pessoaRepository.getPessoaByEmail(email);
 
         if (pessoaTemp == null) {
             throw new Exception("Email não encontrado. Faça seu cadastro!");
         }
 
-        if (pessoa.getSenha().equals(pessoaTemp.getSenha())) {
-            return pessoa;
+        if (senha.equals(pessoaTemp.getSenha())) {
+            return pessoaTemp;
         } else {
             throw new Exception("Senhas não coincidem!");
         }
