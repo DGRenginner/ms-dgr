@@ -12,13 +12,11 @@ function fazPost(url, body) {
 
     return request.responseText
 }
- 
-xhr.onreadystatechance = function cadastraUsuario(){
 
-
-
+function cadastraUsuario(){
   event.preventDefault()
-  xhr.open("POST" , "https://ms-dgr.herokuapp.com/pessoas/criarPessoa") 
+  let xhr = new XMLHttpRequest();
+
   let cpf_cnpj = document.getElementById("cpf_cnpj").value
   let email = document.getElementById("email").value
   let nome = document.getElementById("nome").value
@@ -41,8 +39,20 @@ xhr.onreadystatechance = function cadastraUsuario(){
     "confirmasenha" : confirmasenha,
     "telefone" : telefone,
   }
-fazPost(url, body)
 
+  console.log(JSON.stringify(body))
+  console.log(xhr)
 
+ xhr.onreadystatechange = function() {
+   	if (xhr.readyState == 4) {
+   		if (xhr.status = 200)
+   			console.log(xhr.responseText);
+   		}
+   	}
 
- }
+   	xhr.open('POST', "https://ms-dgr.herokuapp.com/pessoas/criarPessoa", true);
+   	xhr.setRequestHeader("Content-type", "application/json")
+    xhr.send(JSON.stringify(body))
+
+   console.log(xhr.responseText)
+  }

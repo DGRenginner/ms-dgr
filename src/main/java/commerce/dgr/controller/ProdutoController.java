@@ -22,12 +22,14 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
+    @CrossOrigin
     @GetMapping(path = "/{id}")
     public ResponseEntity<Produto> getProdutoById(@PathVariable("id") Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
         return produto.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<Produto>> getAllProdutos() {
         Iterable<Produto> produtos = produtoRepository.findAll();
@@ -37,11 +39,13 @@ public class ProdutoController {
         return new ResponseEntity<>((List<Produto>) produtos, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(path = "/criarProduto")
     public ResponseEntity<?> criarProduto(@RequestBody Produto produto) {
         return new ResponseEntity<>(produtoRepository.save(produto), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(path = "/atualizarProduto")
     public ResponseEntity<?> atualizarProduto(@RequestBody Produto produto) {
         return new ResponseEntity<>(produtoRepository.save(produto), HttpStatus.OK);

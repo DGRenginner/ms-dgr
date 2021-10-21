@@ -18,16 +18,19 @@ public class ClienteController {
         this.clienteRepository = clienteRepository;
     }
 
+    @CrossOrigin
     @PostMapping(path = "/criarCliente")
     public ResponseEntity<?> criarCliente(@RequestBody Cliente cliente) {
         return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(path = "/atualizarCliente")
     public ResponseEntity<?> atualizarCliente(@RequestBody Cliente cliente) {
         return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(path = "/excluirCliente")
     public ResponseEntity<?> excluirCliente(@PathVariable("id") Long id) {
         clienteRepository.deleteById(id);
