@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,34 +8,39 @@
     <link rel="stylesheet" href="estilo/cadastro.css">
 </head>
 <body>
+    
     <div class="container">
         <div class="title">Registrar</div>
-        <form action="index.html">
+        <script src="js/connection.js"></script>
+        <form onsubmit="cadastraUsuario()">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Nome Completo</span>
-                    <input type="text" placeholder="Insira seu nome" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Usuário</span>
-                    <input type="text" placeholder="Insira seu usuário" required>
+                    <span class="details">CPF OU CNPJ</span>
+                    <input id="cpf_cnpj" maxlength="14" type="text" value = "43674766850" placeholder="CPF OU CNPJ" required>
                 </div>
                 <div class="input-box">
                     <span class="details">E-mail</span>
-                    <input type="text" placeholder="Insira seu e-mail" required>
+                    <input id="email" type="text" value = "rayaneplatero@gmail.com" placeholder="Insira seu e-mail" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Nome Completo</span>
+                    <input id="nome" type="text" value = "Rayane" placeholder="Insira seu usuário" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Celular</span>
-                    <input type="text" placeholder="Insira seu número" required>
+                    <input id="telefone" minlength="11" type="text" value = "11993615908" placeholder="Insira seu número" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Senha</span>
-                    <input type="password" placeholder="Insira sua Senha" required>
+                    <input id="senha" minlength="6" type="password" value = "senha" placeholder="Insira uma senha" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Confirmar Senha</span>
-                    <input type="password"  placeholder="Confirmar Senha" required>
+                    <input id="confirmasenha" type="password" value="senha" placeholder="Confirmar Senha" required>
                 </div>
+                
+               
+    
             </div>
             <div class="gender-details">
             <input type="radio" name="gender" id="dot-1">
