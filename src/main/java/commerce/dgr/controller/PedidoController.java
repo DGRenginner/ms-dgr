@@ -24,12 +24,14 @@ public class PedidoController {
         this.pedidoRepository = pedidoRepository;
     }
 
+    @CrossOrigin
     @GetMapping(path = "/{id}")
     public ResponseEntity<Pedido> buscarPedidoPorId(@PathVariable("id") Long id) {
         Optional<Pedido> pedido = pedidoRepository.findById(id);
         return pedido.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
+    @CrossOrigin
     @GetMapping(path = "/buscarPedidosCliente/codigoCliente={codigoCliente}")
     public ResponseEntity<List<Pedido>> buscarPedidosCliente(@PathVariable("codigoCliente") Long codigoCliente) {
         Iterable<Pedido> pedidos = pedidosClienteService.consultarPedidosPorCliente(codigoCliente);
@@ -38,7 +40,7 @@ public class PedidoController {
         }
         return new ResponseEntity<>((List<Pedido>) pedidos, HttpStatus.OK);
     }
-
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<Pedido>> buscarTodosPedidos() {
         Iterable<Pedido> pedido = pedidoRepository.findAll();
@@ -47,12 +49,13 @@ public class PedidoController {
         }
         return new ResponseEntity<>((List<Pedido>) pedido, HttpStatus.OK);
     }
-
+    @CrossOrigin
     @PostMapping(path = "/criarPedido")
     public ResponseEntity<?> criarPedido(@RequestBody Pedido pedido) {
         return new ResponseEntity<>(pedidoRepository.save(pedido), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(path = "/atualizarPedido")
     public ResponseEntity<?> atualizarPedido(@RequestBody Pedido pedido) {
         return new ResponseEntity<>(pedidoRepository.save(pedido), HttpStatus.OK);

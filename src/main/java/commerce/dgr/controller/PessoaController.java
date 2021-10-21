@@ -5,10 +5,13 @@ import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+
+import static org.springframework.web.bind.annotation.CrossOrigin.DEFAULT_ORIGINS;
 
 @RestController
 @RequestMapping("pessoas")

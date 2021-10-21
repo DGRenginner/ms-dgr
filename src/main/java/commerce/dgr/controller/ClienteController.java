@@ -24,8 +24,6 @@ public class ClienteController {
         return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.OK);
     }
 
-
-
     @CrossOrigin
     @PostMapping(path = "/atualizarCliente")
     public ResponseEntity<?> atualizarCliente(@RequestBody Cliente cliente) {
