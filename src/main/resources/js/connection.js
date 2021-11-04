@@ -17,27 +17,28 @@ function cadastraUsuario(){
   event.preventDefault()
   let xhr = new XMLHttpRequest();
 
-  let cpf_cnpj = document.getElementById("cpf_cnpj").value
+  let cpfcnpj = document.getElementById("cpfcnpj").value
   let email = document.getElementById("email").value
   let nome = document.getElementById("nome").value
   let senha = document.getElementById("senha").value
-  let confirmasenha = document.getElementById("confirmasenha").value
   let telefone = document.getElementById("telefone").value
+  let genero = document.querySelector('input[name="genero"]:checked').value
 
-  console.log(cpf_cnpj)
+  console.log(cpfcnpj)
   console.log(email)
   console.log(nome)
   console.log(senha)
-  console.log(confirmasenha)
   console.log(telefone)
+  console.log(genero)
 
   body = {
-    "cpf_cnpj": cpf_cnpj,
+    "cpfCnpj": cpfcnpj,
     "email" : email,
     "nome" : nome,
     "senha" : senha,
-    "confirmasenha" : confirmasenha,
     "telefone" : telefone,
+    "tipoGenero" : genero,
+    "tipoAcesso" : "CLIENTE"
   }
 
   console.log(JSON.stringify(body))
@@ -56,3 +57,35 @@ function cadastraUsuario(){
 
    console.log(xhr.responseText)
   }
+
+  function login(){
+    event.preventDefault()
+    let xhr = new XMLHttpRequest();
+
+    let email = document.getElementById("email").value
+    let senha = document.getElementById("senha").value
+    
+    console.log(email)
+    console.log(senha)
+  
+    body = {      
+      "email" : email,
+      "senha" : senha
+    }
+  
+    console.log(JSON.stringify(body))
+    console.log(xhr)
+  
+   xhr.onreadystatechange = function() {
+       if (xhr.readyState == 4) {
+         if (xhr.status = 200)
+           console.log(xhr.responseText);
+         }
+       }
+  
+       xhr.open('GET', "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin", true);
+       xhr.setRequestHeader("Content-type", "application/json")
+      xhr.send(JSON.stringify(body))
+  
+     console.log(xhr.responseText)
+    }
