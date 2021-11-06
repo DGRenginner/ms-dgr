@@ -49,7 +49,7 @@ public class PessoaController {
     }
 
     @CrossOrigin
-    @PostMapping(path = "/efetuarLogin")
+    @GetMapping(path = "/efetuarLogin")
     @ResponseBody
     public ResponseEntity<Pessoa> efetuarLogin(@RequestBody LoginDTO loginDTO) {
         return new ResponseEntity<>(pessoaService.efetuarLoginPessoa(loginDTO), HttpStatus.OK);
