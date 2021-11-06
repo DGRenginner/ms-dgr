@@ -3,8 +3,7 @@ package commerce.dgr.entities.personas;
 import commerce.dgr.entities.AbstractEntity;
 import commerce.dgr.enums.TipoAcessoEnum;
 import commerce.dgr.enums.TipoGeneroEnum;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "tb_pessoas")
 @Getter
 @Setter
+@ToString
 public class Pessoa extends AbstractEntity {
 
     @Id

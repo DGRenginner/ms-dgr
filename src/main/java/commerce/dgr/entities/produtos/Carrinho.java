@@ -16,6 +16,7 @@ import java.util.Set;
 @Table(name = "tb_carrinhos")
 public class Carrinho extends AbstractEntity {
 
+
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<ItemCarrinho> itensCarrinho;
 }

@@ -1,40 +1,38 @@
 package commerce.dgr.controller;
 
-import commerce.dgr.component.LoginComponent;
 import commerce.dgr.entities.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
+import commerce.dgr.exception.LoginNaoEncontradoException;
 import commerce.dgr.repository.PessoaRepository;
+import commerce.dgr.services.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("pessoas")
 public class PessoaController {
 
     private final PessoaRepository pessoaRepository;
-    private final LoginComponent loginComponent;
+    private final PessoaService pessoaService;
 
     @Autowired
-    public PessoaController(PessoaRepository pessoaRepository, LoginComponent loginComponent) {
+    public PessoaController(PessoaRepository pessoaRepository, PessoaService pessoaService) {
         this.pessoaRepository = pessoaRepository;
-        this.loginComponent = loginComponent;
+        this.pessoaService = pessoaService;
     }
 
     @CrossOrigin
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Pessoa> getPessoaById(@PathVariable("id") Long id) {
-        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-        return pessoa.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    @GetMapping(path = "/consultarPessoa")
+    public ResponseEntity<Pessoa> consultarPessoaPorEmail(@RequestBody LoginDTO loginDTO) throws LoginNaoEncontradoException {
+        return new ResponseEntity<>(pessoaService.consultarPessoa(loginDTO), HttpStatus.OK);
     }
 
     @CrossOrigin
     @PostMapping(path = "/criarPessoa")
     public ResponseEntity<?> criarPessoa(@RequestBody Pessoa pessoa) {
-        return new ResponseEntity<>(pessoaRepository.save(pessoa), HttpStatus.OK);
+        return new ResponseEntity<>(pessoaService.criarPessoa(pessoa), HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -53,6 +51,6 @@ public class PessoaController {
     @CrossOrigin
     @GetMapping(path = "/efetuarLogin")
     public ResponseEntity<Pessoa> efetuarLogin(@RequestBody LoginDTO loginDTO) {
-        return new ResponseEntity<>(loginComponent.efetuarLoginPessoa(loginDTO.getEmail(), loginDTO.getSenha()), HttpStatus.OK);
+        return new ResponseEntity<>(pessoaService.efetuarLoginPessoa(loginDTO), HttpStatus.OK);
     }
 }

@@ -51,6 +51,6 @@ public class Pedido extends AbstractEntity {
     private StatusEnvioEnum statusEnvio;
 
     @ManyToOne
-    @JoinColumn(name = "clienteCodigo")
+    @JoinColumn(name = "cliente")
     private Cliente cliente;
 }

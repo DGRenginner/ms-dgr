@@ -10,4 +10,8 @@ import java.util.List;
 public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 
     Pessoa getPessoaByEmail(String email);
+
+    boolean existsPessoaByEmail(String email);
+
+
 }
