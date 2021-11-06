@@ -1,4 +1,4 @@
-/*
+
 // Nav
 const nav = document.querySelector(".nav-menu");
 const navigation = document.querySelector(".navigation");
@@ -76,4 +76,4 @@ window.addEventListener("load", () => {
     popup.classList.add("show");
   }, 5000);
 });
-*/
+

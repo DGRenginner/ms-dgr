@@ -1,19 +1,19 @@
 function fazPost(url, body) {
 
-  console.log("Body=", body) 
-    var xhr = new XMLHttpRequest();
-    request.open("post", url, true)
-    request.setRequestHeader("Content-type", "application/json")
-    request.send(JSON.stringify(body))
-  
-    request.onload = function() {
-      console.log(this.responseText)
-    }
+  console.log("Body=", body)
+  var xhr = new XMLHttpRequest();
+  request.open("post", url, true)
+  request.setRequestHeader("Content-type", "application/json")
+  request.send(JSON.stringify(body))
 
-    return request.responseText
+  request.onload = function () {
+    console.log(this.responseText)
+  }
+
+  return request.responseText
 }
 
-function cadastraUsuario(){
+function cadastraUsuario() {
   event.preventDefault()
   let xhr = new XMLHttpRequest();
 
@@ -33,59 +33,86 @@ function cadastraUsuario(){
 
   body = {
     "cpfCnpj": cpfcnpj,
-    "email" : email,
-    "nome" : nome,
-    "senha" : senha,
-    "telefone" : telefone,
-    "tipoGenero" : genero,
-    "tipoAcesso" : "CLIENTE"
+    "email": email,
+    "nome": nome,
+    "senha": senha,
+    "telefone": telefone,
+    "tipoGenero": genero,
+    "tipoAcesso": "CLIENTE"
   }
 
   console.log(JSON.stringify(body))
   console.log(xhr)
 
- xhr.onreadystatechange = function() {
-   	if (xhr.readyState == 4) {
-   		if (xhr.status = 200)
-   			console.log(xhr.responseText);
-   		}
-   	}
 
-   	xhr.open('POST', "https://ms-dgr.herokuapp.com/pessoas/criarPessoa", true);
-   	xhr.setRequestHeader("Content-type", "application/json")
-    xhr.send(JSON.stringify(body))
 
-   console.log(xhr.responseText)
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        console.log("Conta criada com sucesso!")
+
+      } if (xhr.status == 409) {
+        console.log("Já existe um cadastro com esse e-mail.")
+      } else if (xhr.status != 200 && xhr.status != 409){
+        console.log("Ocorreu algum erro durante o processamento. Tente novamente!")
+      }
+        console.log(xhr.responseText);
+     
+    } 
   }
 
-  function login(){
-    event.preventDefault()
-    let xhr = new XMLHttpRequest();
+  xhr.open('POST', "https://ms-dgr.herokuapp.com/pessoas/criarPessoa", true);
+  xhr.setRequestHeader("Content-type", "application/json")
+  xhr.send(JSON.stringify(body))
 
-    let email = document.getElementById("email").value
-    let senha = document.getElementById("senha").value
-    
-    console.log(email)
-    console.log(senha)
+  console.log(xhr.responseText)
+}
+
+
+function login() {
+  event.preventDefault()
+  let xhr = new XMLHttpRequest();
+  let dgr = "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin";
+
+
+  let email = document.getElementById("email").value
+  let senha = document.getElementById("senha").value
+
+  console.log(email)
+  console.log(senha)
+ 
+
+  body = {
+    "email": email,
+    "senha": senha,
   
-    body = {      
-      "email" : email,
-      "senha" : senha
-    }
+  }
+
+  console.log(JSON.stringify(body))
+  console.log(xhr)
+
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+
+      }else if (xhr.status == 204) {
+        console.log("Não identificamos um cadastro com esse e-mail. Gostaria de se cadastrar agora mesmo?")
+      }else if (xhr.status == 203) {
+        console.log("A senha não coincide com a que encontramos. Deseja recuperar sua senha?")
+      } else {
+        console.log("Ocorreu algum erro durante o processamento. Tente novamente!")
+      }
+        console.log(xhr.responseText);
+     
+    } 
+  }
+
+  xhr.open('POST', dgr, true);
+  xhr.setRequestHeader("Content-type", "application/json")
+  xhr.send(JSON.stringify(body))
+
+  console.log(xhr.responseText)
   
-    console.log(JSON.stringify(body))
-    console.log(xhr)
-  
-   xhr.onreadystatechange = function() {
-       if (xhr.readyState == 4) {
-         if (xhr.status = 200)
-           console.log(xhr.responseText);
-         }
-       }
-  
-       xhr.open('GET', "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin", true);
-       xhr.setRequestHeader("Content-type", "application/json")
-      xhr.send(JSON.stringify(body))
-  
-     console.log(xhr.responseText)
-    }
+}
+/* Adicionar form action para direcioar para pagina e incluir alert para conta criada com sucesso e etc */

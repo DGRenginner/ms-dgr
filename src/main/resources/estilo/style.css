@@ -319,7 +319,14 @@
     text-decoration: underline;
 }
 
-
+#msgError{
+  text-align: center;
+  color: #ff0000;
+  background-color: #ffbbbb;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
 
 
   /* Hero Area */
