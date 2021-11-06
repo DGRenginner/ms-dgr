@@ -49,8 +49,9 @@ public class PessoaController {
     }
 
     @CrossOrigin
-    @GetMapping(path = "/efetuarLogin")
-    public ResponseEntity<Pessoa> efetuarLogin(@RequestBody LoginDTO loginDTO) {
-        return new ResponseEntity<>(pessoaService.efetuarLoginPessoa(loginDTO), HttpStatus.OK);
+    @GetMapping(path = "/efetuarLogin/email={email}&senha={senha}")
+    @ResponseBody
+    public ResponseEntity<Pessoa> efetuarLogin(@PathVariable("email") String email, @PathVariable("senha") String senha) {
+        return new ResponseEntity<>(pessoaService.efetuarLoginPessoa(LoginDTO.builder().email(email).senha(senha).build()), HttpStatus.OK);
     }
 }
