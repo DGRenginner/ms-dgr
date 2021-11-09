@@ -1,6 +1,7 @@
 package commerce.dgr.controller;
 
 import commerce.dgr.entities.dto.login.CriaCarrinhoParaClienteDTO;
+import commerce.dgr.entities.dto.login.ExcluirItemCarrinhoDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.services.CarrinhoService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +43,13 @@ public class CarrinhoController {
     public ResponseEntity<?> consultarCarrinho(@RequestBody Pessoa pessoa) {
         log.info("[CARRINHO CONTROLLER] Iniciando consulta de carrinho para pessoa {}", pessoa);
         return new ResponseEntity<>(carrinhoService.consultarCarrinho(pessoa), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping(path = "/excluirItemCarrinho")
+    public ResponseEntity<?> excluirItemCarrinho(@RequestBody ExcluirItemCarrinhoDTO dto) {
+        log.info("[CARRINHO CONTROLLER] Excluindo item carrinho {}", dto);
+        return new ResponseEntity<>(carrinhoService.excluirItemCarrinho(dto), HttpStatus.OK);
     }
 
 
