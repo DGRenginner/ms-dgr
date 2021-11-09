@@ -1,12 +1,12 @@
 package commerce.dgr.services;
 
-import commerce.dgr.component.PessoaComponent;
 import commerce.dgr.entities.ServiceConstants;
-import commerce.dgr.entities.login.LoginDTO;
+import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.exception.CadastroJaExistenteException;
 import commerce.dgr.exception.LoginNaoEncontradoException;
 import commerce.dgr.exception.SenhaIncorretaException;
+import commerce.dgr.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -20,22 +20,15 @@ import static java.lang.String.format;
 public class PessoaService {
 
     private static final String PESSOA_SERVICE = "[PESSOA SERVICE] {}";
-    private final PessoaComponent pessoaComponent;
+    private final PessoaRepository pessoaRepository;
 
     @SneakyThrows
     public Pessoa efetuarLoginPessoa(LoginDTO loginDTO) {
 
         log.info(PESSOA_SERVICE, format("Iniciando consulta para login com email %s", loginDTO.getEmail()));
-
-        Pessoa pessoaTemp = pessoaComponent.getPessoaPorEmail(loginDTO.getEmail());
-
-        if (pessoaTemp == null) {
-            log.warn(PESSOA_SERVICE, ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
-            throw new LoginNaoEncontradoException(ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
-        }
-
-        if (loginDTO.getSenha().equals(pessoaTemp.getSenha())) {
-            return pessoaTemp;
+        Pessoa pessoa = consultarPessoaPorEmail(loginDTO.getEmail());
+        if (loginDTO.getSenha().equals(pessoa.getSenha())) {
+            return pessoa;
         } else {
             String msgErro = ServiceConstants.ERRO_SENHA_INCORRETA.getMensagemErro();
             log.error(PESSOA_SERVICE, msgErro);
@@ -47,10 +40,10 @@ public class PessoaService {
     public Pessoa criarPessoa(Pessoa pessoa) {
         log.info(PESSOA_SERVICE, format("Iniciando cadastro de pessoa %s", pessoa));
 
-        boolean existePessoa = pessoaComponent.existePessoaPorEmail(pessoa.getEmail());
+        boolean existePessoa = pessoaRepository.existsPessoaByEmail(pessoa.getEmail());
 
         if (!existePessoa) {
-            return pessoaComponent.cadastrarPessoa(pessoa);
+            return pessoaRepository.save(pessoa);
         } else {
             String msgErro = ServiceConstants.ERRO_EMAIL_JA_POSSUI_CADASTRO.getMensagemErro();
             log.warn(PESSOA_SERVICE, msgErro);
@@ -62,8 +55,7 @@ public class PessoaService {
         String email = loginDTO.getEmail();
         log.info(PESSOA_SERVICE, format("Iniciando consulta de pessoa com email %s", email));
 
-        Pessoa pessoa = pessoaComponent.getPessoaPorEmail(email);
-
+        Pessoa pessoa = pessoaRepository.getPessoaByEmail(loginDTO.getEmail());
         if (pessoa == null) {
             String msgErro = ServiceConstants.ERRO_USUARIO_NAO_ENCONTRADO.getMensagemErro();
             log.warn(PESSOA_SERVICE, msgErro);
@@ -72,5 +64,16 @@ public class PessoaService {
             log.info(PESSOA_SERVICE, format("Usuário consultado com sucesso %s", pessoa));
             return pessoa;
         }
+    }
+
+    @SneakyThrows
+    public Pessoa consultarPessoaPorEmail(String email) {
+        Pessoa pessoaTemp = pessoaRepository.getPessoaByEmail(email);
+
+        if (pessoaTemp == null) {
+            log.warn(PESSOA_SERVICE, ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
+            throw new LoginNaoEncontradoException(ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
+        }
+        return pessoaTemp;
     }
 }

@@ -1,4 +1,4 @@
-package commerce.dgr.entities.login;
+package commerce.dgr.entities.dto.login;
 
 import lombok.Builder;
 import lombok.Getter;

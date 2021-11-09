@@ -1,6 +1,6 @@
 package commerce.dgr.component;
 
-import commerce.dgr.entities.login.LoginDTO;
+import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.pedidos.Pedido;
 import commerce.dgr.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;

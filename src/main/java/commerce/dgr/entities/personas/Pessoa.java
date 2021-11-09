@@ -14,10 +14,6 @@ import javax.persistence.*;
 @ToString
 public class Pessoa extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(name = "nome")
     private String nome;
     @Column(name = "cpfCnpj")

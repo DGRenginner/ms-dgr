@@ -1,22 +1,28 @@
 package commerce.dgr.entities.produtos;
 
+import com.sun.istack.NotNull;
 import commerce.dgr.entities.AbstractEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import java.util.Set;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_carrinhos")
 public class Carrinho extends AbstractEntity {
 
+    private static final long serialVersionUID = 1L;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<ItemCarrinho> itensCarrinho;
+    @NotNull
+    @JoinColumn(name = "id_pessoa")
+    private Long idPessoa;
+
+
 }

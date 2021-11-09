@@ -1,6 +1,6 @@
 package commerce.dgr.controller;
 
-import commerce.dgr.entities.login.LoginDTO;
+import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.exception.LoginNaoEncontradoException;
 import commerce.dgr.repository.PessoaRepository;

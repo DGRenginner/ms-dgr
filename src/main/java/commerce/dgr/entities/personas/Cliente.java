@@ -1,7 +1,5 @@
 package commerce.dgr.entities.personas;
 
-import commerce.dgr.enums.TipoAcessoEnum;
-import commerce.dgr.enums.TipoGeneroEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +18,4 @@ public class Cliente extends Pessoa {
     @OneToMany
     @JoinColumn(name = "endereco")
     private Set<Endereco> endereco;
-
 }
