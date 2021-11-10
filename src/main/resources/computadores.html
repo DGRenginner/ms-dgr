@@ -1,81 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="COLOCAR ICON" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="COLOCAR ICON" type="image/x-icon" />
 
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-    <!-- Glidejs -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" />
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
-    <!-- Animate Css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" />
 
-     <!--Custom CSS-->
-     <link
-     rel="stylesheet" href="estilo/computadores.css">
-    <title>DGR Creative</title>
+  <!-- Animate Css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="estilo/computadores.css">
+  <title>DGR Creative</title>
 </head>
 
-<body> 
- <!-- Header -->
- <header id="home" class="header">
+<body>
+  <!-- Header -->
+  <header id="home" class="header">
     <nav class="navigation">
-        <div class="nav-center container">
-           <a href="#home" class="logo">
-           <h1>DGR <span>CRE</span>ATIVE</h1>
-           </a>
+      <div class="nav-center container">
+        <a href="#home" class="logo">
+          <h1>DGR <span>CRE</span>ATIVE</h1>
+        </a>
 
-           <div class="nav-menu">
-               <div class="nav-top">
-                <div class="logo">
-                    <h1>DGR <span>CRE</span>ATIVE</h1>
-                    </div>
+        <div class="nav-menu">
+          <div class="nav-top">
+            <div class="logo">
+              <h1>DGR <span>CRE</span>ATIVE</h1>
+            </div>
 
-                    <div class="close">
-                        <i class="fas fa-times"></i>
-                    </div>
-               </div>
+            <div class="close">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
 
-               <ul class="nav-list">
-                   <li class="nav-item">
-                       <a href="index.html" class="nav-link scroll-link">Home</a>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link scroll-link">Home</a>
             </li>
-                   <li class="nav-item">
-                       <a href="computadores.html" class="nav-link scroll-link">Computadores</a>
+            <li class="nav-item">
+              <a href="computadores.html" class="nav-link scroll-link">Computadores</a>
             </li>
-                   <li class="nav-item">
-                       <a href="perifericos.html" class="nav-link scroll-link">Periféricos</a>
+            <li class="nav-item">
+              <a href="perifericos.html" class="nav-link scroll-link">Periféricos</a>
             </li>
-                   <li class="nav-item">
-                       <a href="#home" class="nav-link scroll-link">Cadeiras</a>
+            <li class="nav-item">
+              <a href="#home" class="nav-link scroll-link">Cadeiras</a>
             </li>
-               </ul>
-           </div>
-
-           <div class="nav-icons">
-               <span><i element="login" class="fas fa-user"></i></span>
-               <span><i class="fas fa-search"></i></span>
-               <span><i class="fas fa-shopping-cart"></i></span>
-           </div>
-
-           <div class="hamburger">
-            <i class="fas fa-bars"></i>
-
-           </div>
+          </ul>
         </div>
+
+        <div class="nav-icons">
+          <span><i element="login" class="fas fa-user"></i></span>
+          <span><i class="fas fa-search"></i></span>
+          <span><i class="fas fa-shopping-cart"></i></span>
+        </div>
+
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+
+        </div>
+      </div>
     </nav>
-</header>
-    <!-- End Header-->
+  </header>
+
+  <div id="container-produtos">
+    <template id="produto-template">
+      <div class="produtos">
+        <p>Id: <span></span></p>
+        <p>Nome: <span></span></p>
+        <p>Descricao: <span></span></p>
+        <p>Marca: <span></span></p>
+        <p>Preço <span></span></p>
+        <p>Imagem <span></span></p>
+      </div>
+    </template>
+  </div>
+
+
+  <!-- End Header
     <form onsubmit="addCarrinho()">
     <div class="produtos">
         <div class="product">
@@ -114,69 +129,70 @@
             </li>
           </ul>
         </div>
-      
+      -->
 </body>
  <!-- Footer -->
- <footer id="footer" class="section footer">
-  <div class="container">
-    <div class="footer-container">
-      <div class="footer-center">
-        <h3>EXTRAS</h3>
-      <a href="#">Marcas</a>
-      <a href="#">Gifts</a>
-      <a href="#">Patrocínios</a>
-      <a href="#">Especiais</a>
-      <a href="#">Inicio</a>
-      </div>
-      <div class="footer-center">
-        <h3>Informações</h3>
-      <a href="#">Sobre Nós</a>
-      <a href="#">Politíca de Privacidade</a>
-      <a href="#">Termos & Condições</a>
-      <a href="faq.html">FAQ</a>
-      <a href="#">Inicio</a>
-      </div>
-      <div class="footer-center">
-        <h3>Minha Conta</h3>
-      <a href="#">Minha Conta</a>
-      <a href="#">Histórico de Pedidos</a>
-      <a href="#">Carrinho</a>
-      <a href="#">Editar Dados</a>
-      <a href="#">Reembolso</a>
-      </div>
-      <div class="footer-center">
-        <h3>Contate-Nos</h3>
-        <div>
-          <span>
-            <i class="fas fa-map-marker-alt"></i>
-          </span>
-          Av. Paulista, 1415 - Bela Vista
+  <footer id="footer" class="section footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-center">
+          <h3>EXTRAS</h3>
+          <a href="#">Marcas</a>
+          <a href="#">Gifts</a>
+          <a href="#">Patrocínios</a>
+          <a href="#">Especiais</a>
+          <a href="#">Inicio</a>
         </div>
-        <div>
-          <span>
-            <i class="far fa-envelope"></i>
-          </span>
-          dgrgamers@gmail.com
+        <div class="footer-center">
+          <h3>Informações</h3>
+          <a href="#">Sobre Nós</a>
+          <a href="#">Politíca de Privacidade</a>
+          <a href="#">Termos & Condições</a>
+          <a href="faq.html">FAQ</a>
+          <a href="#">Inicio</a>
         </div>
-        <div>
-          <span>
-            <i class="fas fa-phone"></i>
-          </span>
-          11-2073-6872
+        <div class="footer-center">
+          <h3>Minha Conta</h3>
+          <a href="#">Minha Conta</a>
+          <a href="#">Histórico de Pedidos</a>
+          <a href="#">Carrinho</a>
+          <a href="#">Editar Dados</a>
+          <a href="#">Reembolso</a>
         </div>
-        <div>
-          <span>
-            <i class="far fa-paper-plane"></i>
-          </span>
-          São Paulo, Paulista
+        <div class="footer-center">
+          <h3>Contate-Nos</h3>
+          <div>
+            <span>
+              <i class="fas fa-map-marker-alt"></i>
+            </span>
+            Av. Paulista, 1415 - Bela Vista
+          </div>
+          <div>
+            <span>
+              <i class="far fa-envelope"></i>
+            </span>
+            dgrgamers@gmail.com
+          </div>
+          <div>
+            <span>
+              <i class="fas fa-phone"></i>
+            </span>
+            11-2073-6872
+          </div>
+          <div>
+            <span>
+              <i class="far fa-paper-plane"></i>
+            </span>
+            São Paulo, Paulista
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-</footer>
-<!-- End Footer -->
-<script src="js/nome.js"></script>
-</form>
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <script src="js/nome.js"></script>
+  </form>
 </body>
+
 </html>
