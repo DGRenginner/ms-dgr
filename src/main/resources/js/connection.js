@@ -66,7 +66,16 @@ function cadastraUsuario() {
   xhr.send(JSON.stringify(body))
 
   console.log(xhr.responseText)
+  alert("Conta Criada com Sucesso") 
 }
+
+function redireciona(){
+  location.href = "index.html";
+}
+
+
+
+
 
 
 function login() {
