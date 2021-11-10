@@ -4,9 +4,11 @@ import com.sun.istack.NotNull;
 import commerce.dgr.entities.AbstractEntity;
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -24,5 +26,7 @@ public class Carrinho extends AbstractEntity {
     @JoinColumn(name = "id_pessoa")
     private Long idPessoa;
 
+    @Column(name = "valor_total")
+    private BigDecimal valorTotal;
 
 }

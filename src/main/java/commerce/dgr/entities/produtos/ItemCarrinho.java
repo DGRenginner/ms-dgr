@@ -1,11 +1,9 @@
 package commerce.dgr.entities.produtos;
 
-import commerce.dgr.entities.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -32,4 +30,10 @@ public class ItemCarrinho implements Serializable {
     @JoinColumn(name = "id_carrinho")
     private Long idCarrinho;
     // se ja existe registro com o codProduto, atualiza a quantidade
+
+    public ItemCarrinho(Produto produto, Integer quantidade, Long idCarrinho) {
+        this.produto = produto.getId();
+        this.idCarrinho = idCarrinho;
+        this.quantidade = quantidade;
+    }
 }

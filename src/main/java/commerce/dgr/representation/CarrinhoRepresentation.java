@@ -1,12 +1,12 @@
 package commerce.dgr.representation;
 
 import commerce.dgr.entities.personas.Pessoa;
-import commerce.dgr.entities.produtos.ItemCarrinho;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -15,6 +15,8 @@ import java.util.List;
 @Builder
 public class CarrinhoRepresentation {
 
+    private Long codigoCarrinho;
     private Pessoa pessoa;
-    private List<ItemCarrinho> itensCarrinho;
+    private List itensCarrinho;
+    private BigDecimal valorTotal;
 }
