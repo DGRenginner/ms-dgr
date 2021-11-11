@@ -24,6 +24,21 @@ html {
   font-size: 62.5%;
 }
 
+.cart {
+  width: 250px;
+  float: right;
+  text-align: center;
+  border: 1px solid rgb(158, 13, 13);
+  overflow-y: scroll;
+  height: 100%;
+}
+
+
+
+.cartImg > img{
+  width: 100px;
+}
+
 body {
   position: relative;
   font-family: "Poppins", sans-serif;
@@ -315,6 +330,28 @@ img {
   }
 }
 
+button {
+  border: 2px solid var(--white);
+  background: var(--purple);
+  color: white;
+  font-weight: bold;
+  margin: 20px;
+  padding: 5px 10px;
+}
+
+.cart {
+  width: 250px;
+  float: right;
+  text-align: center;
+  border: 1px solid rgb(158, 13, 13);
+  overflow-y: scroll;
+  height: 100%;
+}
+
+button:hover {
+  box-shadow: 0 0 5px 5px inset;
+}
+
 /* Hero Area */
 .hero,
 .glide__hero,
@@ -395,6 +432,14 @@ img {
 .buttons-group button:last-child:hover {
   background-color: var(--white);
   color: var(--black);
+}
+
+.produtos .add-cart {
+  color: var(--purple);
+}
+
+.produtos {
+  margin: 100px;
 }
 
 /* --------------------------------------------------------------- */
@@ -715,30 +760,30 @@ opacity: 1;
 }
 
 /* Product center */
-.product-center {
+.container-produtos {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 gap: 2rem ;
 }
 
-.product {
+.produtos {
 text-align: center;
 position: relative;
 padding: 0 1rem;
 }
 
-.product-header{
+.produto-template{
 display: flex;
 align-items: center;
 justify-content: center;
 height: 28rem;
 }
 
-.product-header img.small{
+.produto-template img.small{
 max-height: 20rem;
 }
 
-.product-footer h3{
+.container-produtos  p{
 font-weight: 500;
 font-size: 1.6rem;
 color: var(--grey);
@@ -749,7 +794,7 @@ color: var(--yellow);
 font-size: 1.3rem;
 }
 
-.product-price h4{
+.container-produtos p{
 font-weight: 500;
 }
 
@@ -852,22 +897,22 @@ opacity: 1;
 }
 
 @media only screen and (max-width: 768px) {
-.product-center {
+.produtos {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.product-header {
+.produtos {
   height: 20rem;
 }
 
-.product-header img.small {
+.produtos img.small {
   max-height: 20rem;
 }
 }
 
 
 @media only screen and (max-width: 567px) {
-.product-header {
+.produtos {
   height: 15rem;
 }
 }
@@ -895,7 +940,7 @@ left: 0;
 background-color: rgba(0, 0, 0, 0.5);
 }
 
-.gallary-img {
+.produtos .img {
 object-fit: cover;
 height: 100%;
 width: 100%;

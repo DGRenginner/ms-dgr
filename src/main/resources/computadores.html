@@ -46,6 +46,7 @@
             </div>
           </div>
 
+
           <ul class="nav-list">
             <li class="nav-item">
               <a href="index.html" class="nav-link scroll-link">Home</a>
@@ -63,8 +64,7 @@
         </div>
 
         <div class="nav-icons">
-          <span><i element="login" class="fas fa-user"></i></span>
-          <span><i class="fas fa-search"></i></span>
+
           <span><i class="fas fa-shopping-cart"></i></span>
         </div>
 
@@ -74,17 +74,29 @@
         </div>
       </div>
     </nav>
+
+    <form onsubmit="login()"
+    class="login-form">
+     <h3>Entre Agora</h3>
+     <input id="email" type="email" placeholder="Seu e-mail"  class="box">
+     <input id="senha" type="password" placeholder="Sua senha" class="box">
+     <p>Esqueceu a senha? <a href="#">clique aqui</a></p>
+     <p>não tem uma conta? <a href="cadastro.html">crie agora</a></p>
+     <input type="submit" onclick="login()" value="Login" class="btn">
+   </div>
+ </form>
   </header>
 
   <div id="container-produtos">
     <template id="produto-template">
       <div class="produtos">
-        <p>Id: <span></span></p>
-        <p>Nome: <span></span></p>
-        <p>Descricao: <span></span></p>
-        <p>Marca: <span></span></p>
-        <p>Preço <span></span></p>
-        <p>Imagem <span></span></p>
+        <p> Id: <a id="id"><span></span></p>
+        <p>Nome: <a name="nome"><span></span></p>
+        <p>Descricao: <a name="descricao"><span></span></p>
+        <p>Marca: <a name="marca"><span></span></p>
+        <p>Preço: <a name="preco"><span></span></p>
+        <img src="img/banner4.png" width="200px"> <p>imagem<span></span></p>
+        <button onclick="addCarrinho()">Adicionar ao Carrinho</button>
       </div>
     </template>
   </div>
@@ -108,7 +120,7 @@
             </div>
             <div class="product-price">
               <h4>Preço<span></span>></h4>
-              <input type="hidden" value="3999.80">
+              <input type="hidden" name="3999.80">
             </div>
           </div>
           <ul>
@@ -192,6 +204,7 @@
   </footer>
   <!-- End Footer -->
   <script src="js/nome.js"></script>
+  <script src="js/connection.js"></script>
   </form>
 </body>
 
