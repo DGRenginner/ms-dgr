@@ -27,8 +27,6 @@ public class Pessoa extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private TipoGeneroEnum tipoGenero;
 
-    @Column(name = "login")
-    private String login;
     @Column(name = "senha")
     private String senha;
 

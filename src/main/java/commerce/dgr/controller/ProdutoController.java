@@ -31,7 +31,7 @@ public class ProdutoController {
 
     @CrossOrigin
     @GetMapping
-    public ResponseEntity<List<Produto>> getAllProdutos() {
+    public ResponseEntity<List<Produto>> consultarTodosProdutos() {
         Iterable<Produto> produtos = produtoRepository.findAll();
         if (!produtos.iterator().hasNext()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -54,13 +54,6 @@ public class ProdutoController {
     @DeleteMapping(path = "/excluirProduto")
     public ResponseEntity<?> excluirProduto(@PathVariable("id") Long id) {
         produtoRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping(path = "/criarProdutos")
-    public ResponseEntity<?> criarProdutos(@RequestBody List<Produto> produtoList) {
-        log.info(String.valueOf(produtoList));
-        produtoRepository.saveAll(produtoList);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

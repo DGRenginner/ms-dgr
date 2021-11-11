@@ -2,6 +2,7 @@ package commerce.dgr.services;
 
 import commerce.dgr.entities.dto.login.CriaCarrinhoParaClienteDTO;
 import commerce.dgr.entities.dto.login.ExcluirItemCarrinhoDTO;
+import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.entities.produtos.Carrinho;
 import commerce.dgr.entities.produtos.ItemCarrinho;
@@ -33,11 +34,11 @@ public class CarrinhoService {
     private final CarrinhoRepository carrinhoRepository;
     private final PessoaService pessoaService;
     private final ItemCarrinhoRepository itemCarrinhoRepository;
-    private final ProdutoRepository produtoRepository;
+    private final ProdutoService produtoService;
 
-    public boolean consultaExisteCarrinhoPorCliente(String email) {
+    public boolean consultaExisteCarrinhoPorCliente(LoginDTO dto) {
 
-        Pessoa pessoa = pessoaService.consultarPessoaPorEmail(email);
+        Pessoa pessoa = pessoaService.consultarPessoaPorEmail(dto.getEmail());
         log.info("[CARRINHO SERVICE] Iniciando consulta de existencia de carrinho para pessoa {}", pessoa);
 
         Carrinho carrinho = carrinhoRepository.findByIdPessoa(pessoa.getId());
@@ -55,27 +56,29 @@ public class CarrinhoService {
         Pessoa pessoa = pessoaService.consultarPessoaPorEmail(dto.getEmail());
         Carrinho carrinho = carrinhoRepository.findByIdPessoa(pessoa.getId());
 
+        Produto produto = produtoService.getProdutoPorId(dto.getIdProduto());
         if (isNull(carrinho)) {
-            carrinho = CarrinhoFactory.criaCarrinho(pessoa, dto);
+            carrinho = CarrinhoFactory.criaCarrinho(pessoa, produto);
 
             carrinhoRepository.save(carrinho);
-            ItemCarrinho itemCarrinho = ItemCarrinhoFactory.criaItemCarrinho(carrinho.getId(), dto.getProduto(), dto.getQuantidade());
+            ItemCarrinho itemCarrinho = ItemCarrinhoFactory.criaItemCarrinho(carrinho.getId(), produto, dto.getQuantidade());
             itemCarrinhoRepository.save(itemCarrinho);
 
-            return CarrinhoRepresentationFactory.criaItemCarrinho(pessoa, Collections.singletonList(itemCarrinho), dto.getProduto().getPreco());
+            return CarrinhoRepresentationFactory.criaItemCarrinho(pessoa, Collections.singletonList(itemCarrinho), produto.getPreco());
 
         } else {
-            return adicionarItemCarrinho(dto, carrinho, pessoa);
+            return adicionarItemCarrinho(dto, carrinho, pessoa, produto);
         }
     }
 
     @Transactional
-    public CarrinhoRepresentation adicionarItemCarrinho(CriaCarrinhoParaClienteDTO dto, Carrinho carrinho, Pessoa pessoa) {
+    public CarrinhoRepresentation adicionarItemCarrinho(CriaCarrinhoParaClienteDTO dto, Carrinho carrinho, Pessoa pessoa, Produto produto) {
 
         Iterable<ItemCarrinho> itensCarrinho = itemCarrinhoRepository.findByIdCarrinho(carrinho.getId());
 
         Map<Produto, Integer> mapProdutoQtd = converterParaMap(itensCarrinho);
-        verificaDadosProdutoMap(new ItemCarrinho(dto.getProduto(), dto.getQuantidade(), carrinho.getId()), mapProdutoQtd);
+
+        verificaDadosProdutoMap(new ItemCarrinho(produto, dto.getQuantidade(), carrinho.getId()), mapProdutoQtd);
 
         atualizarItensCarrinho(mapProdutoQtd, carrinho);
         atualizarValorTotalCarrinho(mapProdutoQtd, carrinho);
@@ -110,7 +113,7 @@ public class CarrinhoService {
     }
 
     private void verificaDadosProdutoMap(ItemCarrinho itemCarrinho, Map<Produto, Integer> mapProdutoQtd) {
-        Produto produto = getProdutoPorId(itemCarrinho.getProduto());
+        Produto produto = produtoService.getProdutoPorId(itemCarrinho.getProduto());
         if (mapProdutoQtd.containsKey(produto)) {
             mapProdutoQtd.replace(produto, mapProdutoQtd.get(produto) + itemCarrinho.getQuantidade());
         } else {
@@ -118,10 +121,6 @@ public class CarrinhoService {
         }
     }
 
-    private Produto getProdutoPorId(Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        return produto.orElse(null);
-    }
 
     private void adicionaQtd(CriaCarrinhoParaClienteDTO dto, ItemCarrinho itemCarrinho) {
         itemCarrinho.setQuantidade(itemCarrinho.getQuantidade() + dto.getQuantidade());

@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BuscarPedidosClienteService {
+public class PedidosService {
 
     @Autowired
     private final PedidoRepository pedidoRepository;

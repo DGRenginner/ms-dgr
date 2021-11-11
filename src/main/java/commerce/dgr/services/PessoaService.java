@@ -76,4 +76,15 @@ public class PessoaService {
         }
         return pessoaTemp;
     }
+
+    @SneakyThrows
+    public Pessoa excluirPessoa(Pessoa pessoa) {
+        Pessoa pessoaTemp = pessoaRepository.getPessoaByEmail(pessoa.getEmail());
+
+        if (pessoaTemp == null) {
+            log.warn(PESSOA_SERVICE, ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
+            throw new LoginNaoEncontradoException(ServiceConstants.ERRO_EMAIL_NAO_ENCONTRADO.getMensagemErro());
+        }
+        return pessoaTemp;
+    }
 }

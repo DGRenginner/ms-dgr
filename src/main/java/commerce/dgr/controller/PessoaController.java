@@ -3,7 +3,6 @@ package commerce.dgr.controller;
 import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.exception.LoginNaoEncontradoException;
-import commerce.dgr.repository.PessoaRepository;
 import commerce.dgr.services.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,12 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("pessoas")
 public class PessoaController {
 
-    private final PessoaRepository pessoaRepository;
     private final PessoaService pessoaService;
 
     @Autowired
-    public PessoaController(PessoaRepository pessoaRepository, PessoaService pessoaService) {
-        this.pessoaRepository = pessoaRepository;
+    public PessoaController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
     }
 
@@ -38,13 +35,13 @@ public class PessoaController {
     @CrossOrigin
     @PostMapping(path = "/atualizarPessoa")
     public ResponseEntity<?> atualizarPessoa(@RequestBody Pessoa pessoa) {
-        return new ResponseEntity<>(pessoaRepository.save(pessoa), HttpStatus.OK);
+        return new ResponseEntity<>(pessoaService.criarPessoa(pessoa), HttpStatus.OK);
     }
 
     @CrossOrigin
-    @DeleteMapping(path = "/excluirPessoa/{id}")
-    public ResponseEntity<?> excluirPessoa(@PathVariable("id") Long id) {
-        pessoaRepository.deleteById(id);
+    @DeleteMapping(path = "/excluirPessoa")
+    public ResponseEntity<?> excluirPessoa(@RequestBody Pessoa pessoa) {
+        pessoaService.excluirPessoa(pessoa);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

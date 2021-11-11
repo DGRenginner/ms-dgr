@@ -2,6 +2,7 @@ package commerce.dgr.controller;
 
 import commerce.dgr.entities.dto.login.CriaCarrinhoParaClienteDTO;
 import commerce.dgr.entities.dto.login.ExcluirItemCarrinhoDTO;
+import commerce.dgr.entities.dto.login.LoginDTO;
 import commerce.dgr.entities.personas.Pessoa;
 import commerce.dgr.services.CarrinhoService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,13 @@ public class CarrinhoController {
     @Autowired
     public CarrinhoController(CarrinhoService carrinhoService) {
         this.carrinhoService = carrinhoService;
+    }
+
+    @CrossOrigin
+    @PostMapping(path = "/verificaExisteCarrinho")
+    public ResponseEntity<?> verificaExisteCarrinho(@RequestBody LoginDTO dto) {
+        log.info("[CARRINHO CONTROLLER] Iniciando criação/atualizacao de carrinho com objeto {}", dto);
+        return new ResponseEntity<>(carrinhoService.consultaExisteCarrinhoPorCliente(dto), HttpStatus.OK);
     }
 
     @CrossOrigin
