@@ -1,12 +1,33 @@
+:root{
+    --white: #fff;
+    --black: #222;
+    --pink: #f60091;
+    --purple: #8c52ff;
+    --grey: #444;
+    --grey2: #959595;
+    --grey-alt: #d1e2e9;
+    --yellow: #ffd800;
+    --green: #59b210;
+  }
+
 body {
     font-family: Arial;
     font-size: 17px;
     padding: 8px;
 }
+
 h2{
     text-align:left;
+    color: white;
 }
 
+a{
+    color: var(--white);
+}
+
+label{
+    color: white;
+}
 * {
     box-sizing: border-box;
 }
@@ -44,7 +65,7 @@ h2{
 }
 
 .container {
-    background-color: #FFFFFF;
+    background-color:var(--purple);
     padding: 3px 18px 13px 18px;
     border: 1px solid lightgrey;
     border-radius: 3px;
@@ -89,9 +110,7 @@ label {
     background-color: #0CBABA;
 }
 
-a {
-    color: #2196F3;
-}
+
 
 hr {
     border: 1px solid lightgrey;
@@ -99,7 +118,7 @@ hr {
 
 span.price {
     float: right;
-    color: grey;
+    color: rgb(255, 255, 255);
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns 

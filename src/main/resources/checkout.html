@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h2>Tela de Pagamento</h2>
+<a href="index.html">DGR CRE ATIVE</a>
 <div class="row">
     <div class="col-75">
         <div class="container">
@@ -53,28 +53,15 @@
                             <i class="fa fa-cc-mastercard" style="color:red;"></i>
                         </div>
 
-                        <label for="cname">Nome No Cartão</label>
-                        <input type="text" id="cname" name="cardname" placeholder="Giovanni Danilo Rayane"required>
-                        <label for="ccnum">Número Cartão Crédito</label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"required>
-                        <label for="expmonth">Mês de Expiração</label>
-                        <input type="text" id="expmonth" name="expmonth" placeholder="Dezembro"required>
-                        <div class="row">
-                            <div class="col-50">
-                                <label for="expyear">Ano de Expiração</label>
-                                <input type="text" id="expyear" name="expyear" placeholder="2021"required>
-                            </div>
-                            <div class="col-50">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="352"required>
-                            </div>
-                        </div>
-                    </div>
+                        <label for="cname">PIX</label>
+                        <img src="img/pix.jpeg" width="600px">
+                       
                 </div>
                 <label>
                 <input type="checkbox" checked="checked" name="sameadr"> Endereço de envio igual ao faturamento
                 </label>
-                <input type="submit" value="Pagar" class="btn">
+                <input  type="submit" value="Continuar Pagamento" onclick="checkout()" class="btn">
+          
             </form>
         </div>
     </div>
@@ -92,6 +79,10 @@
 </div>
 <!-- script validate js -->
 <script>
+    function checkout(){
+        location.href = "pay.html";
+    }
+
     $('#validate').validate({
         roles: {
             fullname: {
@@ -111,23 +102,7 @@
             },
             zip: {
                 required: true,
-            },
-            cardname: {
-                required: true,
-            },
-            cardnumber: {
-                required: true,
-            },
-            expmonth: {
-                required: true,
-            },
-            expyear: {
-                required: true,
-            },
-            cvv: {
-                required: true,
-            },
-           
+            }, 
         },
         messages: {
             fullname:"Por favor, insira o nome completo*",
@@ -136,11 +111,6 @@
             address:"Por favor, insira o endereço*",
             state:"Por favor, insira o estado*",
             zip:"Por favor, insira o endereço*",
-            cardname:"Por favor, insira nome vinculado no cartão*",
-            cardnumber:"Por favor, insira numero do cartão*",
-            expmonth:"Por favor, insira mês de expiração*",
-            expyear:"Por favor, insira ano de expiração*",
-            cvv:"Por favor, insira o cvv*",
         },
     });
 </script>
