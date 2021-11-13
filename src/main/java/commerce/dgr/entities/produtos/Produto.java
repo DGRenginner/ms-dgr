@@ -38,4 +38,7 @@ public class Produto extends AbstractEntity {
 
     @Column(name = "urlImagem")
     private String urlImagem;
+
+    @Column(name = "quantidade")
+    private Integer quantidade;
 }
