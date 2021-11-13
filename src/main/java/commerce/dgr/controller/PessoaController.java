@@ -25,7 +25,6 @@ public class PessoaController {
     public ResponseEntity<Pessoa> consultarPessoaPorEmail(@RequestBody LoginDTO loginDTO) throws LoginNaoEncontradoException {
         return new ResponseEntity<>(pessoaService.consultarPessoa(loginDTO), HttpStatus.OK);
     }
-
     @CrossOrigin
     @PostMapping(path = "/criarPessoa")
     public ResponseEntity<?> criarPessoa(@RequestBody Pessoa pessoa) {
