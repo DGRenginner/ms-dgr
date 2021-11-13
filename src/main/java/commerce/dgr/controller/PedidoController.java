@@ -60,5 +60,4 @@ public class PedidoController {
     public ResponseEntity<?> atualizarPedido(@RequestBody Pedido pedido) {
         return new ResponseEntity<>(pedidoRepository.save(pedido), HttpStatus.OK);
     }
-
 }

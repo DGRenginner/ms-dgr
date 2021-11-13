@@ -59,7 +59,4 @@ public class CarrinhoController {
         log.info("[CARRINHO CONTROLLER] Excluindo item carrinho {}", dto);
         return new ResponseEntity<>(carrinhoService.excluirItemCarrinho(dto), HttpStatus.OK);
     }
-
-
-
 }
