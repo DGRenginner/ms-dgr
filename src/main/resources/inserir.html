@@ -107,41 +107,48 @@
             <div class='label'>
                 <div>URL imagem</div>
                 <div>
-                    <input id='url' />
+                    <input id='urlImagem'  value="https://dgr-images.s3.us-east-2.amazonaws.com/img+(1)/img/allpc.jpg" />
                 </div>
             </div>
     
             <div class='label'>
                 <div>Nome</div>
                 <div>
-                    <input id='nome' />
+                    <input id='nome' value="teste" />
                 </div>
             </div>
     
             <div class='label'>
                 <div>Preço</div>
                 <div>
-                    <input id='price' />
+                    <input type='number' id='preco' value= '1' />
                 </div>
             </div>
 
             <div class='label'>
                 <div>Descrição</div>
                 <div>
-                    <input type='text' id="descricao"/>
+                    <input type='text' id="descricao" value="teste"/>
                 </div>
             </div>
 
             <div class='label'>
                 <div>Marca</div>
                 <div>
-                    <input type='text' id="marca"/>
+                    <input type='text' id="marca" value="teste"/>
                 </div>
             </div>
-    
+            
+            <div class='label'>
+                <div>Quantidade</div>
+                <div>
+                    <input type='text' id="quantidade" value="1"/>
+                </div>
+            </div>
+
             <div>
-                <button>Salvar</button>
-                <button onsubmit="cadastraProduto()" class="cinza" type='button'>Cancelar</button>
+                <button>Cancelar</button>
+                <button onclick="cadastraProduto()" class="cinza" type='button'>Salvar</button>
             </div>
     
         </form>
