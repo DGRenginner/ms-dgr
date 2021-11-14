@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="COLOCAR ICON" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <!-- Glidejs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" />
+
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="estilo/inserir.css">
+    <script src="js/main.js"></script>
+    
+    <title>DGR Creative</title>
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="home" class="header">
+        <nav class="navigation">
+            <div class="nav-center container">
+                <a href="#home" class="logo">
+                    <h1>DGR <span>CRE</span>ATIVE</h1>
+                </a>
+
+                <div class="nav-menu">
+                    <div class="nav-top">
+                        <div class="logo">
+                            <h1>DGR <span>CRE</span>ATIVE</h1>
+                        </div>
+
+                        <div class="close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+
+
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link scroll-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="computadores.html" class="nav-link scroll-link">Computadores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="perifericos.html" class="nav-link scroll-link">Periféricos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link scroll-link">Cadeiras</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-icons">
+
+                    <span><i class="fas fa-shopping-cart"></i></span>
+                </div>
+
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+
+                </div>
+            </div>
+        </nav>
+        <div id='listaRegistros'>
+
+            <div style='display: flex;'>
+                <input style='flex:1' placeholder="PESQUISAR" autofocus id='inputPesquisa' />
+            </div>
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id='listaRegistrosBody'></tbody>
+            </table>
+    
+            <div>
+                <button>Novo Produto</button>
+            </div>
+    
+        </div>
+    
+        <form id='cadastroRegistro'>
+    
+            <div class='label'>
+                <div>URL imagem</div>
+                <div>
+                    <input id='url' />
+                </div>
+            </div>
+    
+            <div class='label'>
+                <div>Nome</div>
+                <div>
+                    <input id='nome' />
+                </div>
+            </div>
+    
+            <div class='label'>
+                <div>Preço</div>
+                <div>
+                    <input id='price' />
+                </div>
+            </div>
+
+            <div class='label'>
+                <div>Descrição</div>
+                <div>
+                    <input type='text' id="descricao"/>
+                </div>
+            </div>
+
+            <div class='label'>
+                <div>Marca</div>
+                <div>
+                    <input type='text' id="marca"/>
+                </div>
+            </div>
+    
+            <div>
+                <button>Salvar</button>
+                <button onsubmit="cadastraProduto()" class="cinza" type='button'>Cancelar</button>
+            </div>
+    
+        </form>
+    
+    </body>
+    </html>
