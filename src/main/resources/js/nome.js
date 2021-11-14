@@ -1,32 +1,71 @@
 const carregarProdutos = async () => {
-
+    //https://ms-dgr.herokuapp.com
+    //http://localhost:8081
     const response = await fetch('https://ms-dgr.herokuapp.com/produtos')
+
     const dados = await response.json()
+    dados.quantidade = 0
     console.log(dados)
 
-    //para cada item de produto, adiciona na pagina html um template preenchido
-    dados.forEach(item => {
-        const containerProdutosElement = document.getElementById("container-produtos")
+    const containerProdutosElement = document.getElementById("container-produtos")
+
+    dados.map((val) => {
+        console.log(val)
+        containerProdutosElement.innerHTML += `
+   
+
+        <div class="produtos">
+        <div class="product">
+          <div class="product-header">
+            <img src=" ${val.urlImagem}" class='small' alt="product">
+          </div>
+          <div class="product-footer">
+            <h3<span> ${val.nome}</span></h3>
+            <h4><span> ${val.marca}</span></h4>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="product-price">
+              <h4>R$ ${val.preco}></h4>
+              <input type="hidden" name="3999.80">
+            </div>
+          </div>
+          <ul>
+            <li>
+            <a key="${val.id}" href="#" > Adicionar ao carrinho!<a/>
+              </a>
+            </li>
+            <li>
+            <a href="">
+                <i class="far fa-heart"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="far fa-credit-card"></i>
+              </a>
+            </li>
+          </ul>
        
-        const template = document.getElementById("produto-template")
-
-        //const imagemElement = document.getElementById('product-header')
-        
-        const produtoElement = document.importNode(template.content, true)
-
-        const itens_produto = produtoElement.querySelectorAll('span')
-        itens_produto[0].innerText = item.id
-        itens_produto[1].innerText = item.nome
-        itens_produto[2].innerText = item.descricao
-        itens_produto[3].innerText = item.marca
-        itens_produto[4].innerText = item.preco
-        itens_produto[5].innerText = item.urlImagem
-
-
-        containerProdutosElement.append(produtoElement)
+        `
     });
 
-    
+    // <i id="item1" class="fas fa-shopping-cart" >Add</i>
+    var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+            let key = this.getAttribute('key');
+            addCarrinho(key);
+            return false;
+        })
+    }
+
+
+
     let items = "items";
     localStorage.setItem(email, 'value')
     console.log(dados)
@@ -39,24 +78,25 @@ window.onload = () => {
 }
 
 
-function addCarrinho() {
+function addCarrinho(id) {
 
     let xhr = new XMLHttpRequest();
-    let dgr = ('https://ms-dgr.herokuapp.com/carrinhos/criarAtualizarCarrinho');
+    let dgr = ('http://localhost:8081/carrinhos/criarAtualizarCarrinho');
 
-    let idProduto = document.getElementById("id")
-    console.log(idProduto)
+    console.log(id)
 
     body = {
-        "id_pessoa": 37,
-        "id_produto": 1
+        "email": "admin@admin",
+        "idProduto": id,
+        "quantidade" : 1
     }
-
+   
+    console.log(body)
 
     xhr.open('POST', dgr, true);
     xhr.setRequestHeader("Content-type", "application/json")
     xhr.send(JSON.stringify(body))
-  
+
     console.log(xhr.responseText)
 
 }
@@ -66,10 +106,12 @@ function login() {
     let xhr = new XMLHttpRequest();
     let dgr = "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin";
   
+    
   
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
-  
+    localStorage.setItem(email, 'value');
+    let myItem = localStorage.getItem(email);
     console.log(email)
     console.log(senha)
    
@@ -83,10 +125,10 @@ function login() {
     console.log(JSON.stringify(body))
     console.log(xhr)
   
-  
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
+  
         }else if (xhr.status == 204) {
           console.log("Não identificamos um cadastro com esse e-mail. Gostaria de se cadastrar agora mesmo?")
         }else if (xhr.status == 203) {
@@ -114,7 +156,7 @@ function login() {
     let dgr = "https://ms-dgr.herokuapp.com/carrinhos/criarAtualizarCarrinho";
 
     document.getElementById("add-cart").addEventListener("click",pag)
-    
+
 
     xhr.open('POST', dgr, true);
     xhr.setRequestHeader("Content-type", "application/json")
