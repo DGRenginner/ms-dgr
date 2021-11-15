@@ -34,22 +34,14 @@ const carregarProdutos = async () => {
               <input type="hidden" name="3999.80">
             </div>
           </div>
+          <div class="car">
           <ul>
             <li>
-            <a key="${val.id}" href="#" > Adicionar ao carrinho!<a/>
+            <a key="${val.id}" href="#" > Adicionar ao carrinho<a/>
               </a>
             </li>
             <li>
-            <a href="">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="far fa-credit-card"></i>
-              </a>
-            </li>
-          </ul>
+            </div>
        
         `
     });

@@ -68,7 +68,7 @@
 
                 <div class="nav-icons">
 
-                    <span><i class="fas fa-shopping-cart"></i></span>
+            
                 </div>
 
                 <div class="hamburger">
@@ -77,30 +77,7 @@
                 </div>
             </div>
         </nav>
-        <div id='listaRegistros'>
 
-            <div style='display: flex;'>
-                <input style='flex:1' placeholder="PESQUISAR" autofocus id='inputPesquisa' />
-            </div>
-    
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Descrição</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id='listaRegistrosBody'></tbody>
-            </table>
-    
-            <div>
-                <button>Novo Produto</button>
-            </div>
-    
-        </div>
     
         <form id='cadastroRegistro'>
     
@@ -138,7 +115,7 @@
                     <input type='text' id="marca" value="teste"/>
                 </div>
             </div>
-            
+             
             <div class='label'>
                 <div>Quantidade</div>
                 <div>
@@ -152,6 +129,27 @@
             </div>
     
         </form>
+        <div id='listaRegistros'>
+
+            <div style='display: flex;' class="btnpesquisar">
+                <input style='flex:1' placeholder="PESQUISAR" autofocus id='inputPesquisa' />
+            </div>
     
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody id='listaRegistrosBody'></tbody>
+            </table>
+    
+            
+    
+        </div>
+
     </body>
     </html>

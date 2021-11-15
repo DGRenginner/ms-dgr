@@ -9,16 +9,12 @@
     --yellow: #ffd800;
     --green: #59b210;
   }
-        .listaRegistros{ display: none; }
-        .cadastroRegistro{
-            display: none;
-            flex-direction: column;
-            gap: 30px;
-            justify-content: space-between 2px;
-        }
+  
+        
+  
 
         body[page=lista] #listaRegistros{ display: block; }
-        body[page=cadastro] #cadastroRegistro{ display: flex; }
+        
 
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -27,15 +23,18 @@
 
         table{
             width: 100%;
-            border-collapse: collapse;
+            
+            border-bottom:var(--purple);
         }
         table th,
         table td{
-            font-size: 14px;
             padding: 10px 15px;
             border: solid 1px #ccc;
         }
 
+
+
+      
         button{
             border: none;
             border-radius: 4px;
@@ -49,6 +48,7 @@
             background-color: #ccc;
             color: #666;
         }
+        
         button.vermelho{
             background-color: #a00;
         }
@@ -56,22 +56,23 @@
             opacity: 0.8;
         }
 
+        .btnpesquisar{
+          margin: 20px;
+        }
+        
         input{
-            border: solid 1px #ccc;
-            border-radius: 4px;
+            border: solid 2px rgb(204, 204, 204);
+            border-radius: 1px;
             padding: 10px;
+            min-width:35%;
+            
+            
         }
 
-        .label>div{
-            display: flex;
-        }
-        .label>div>input{
-            flex: 1;
-        }
+
   *,
   *::after,
   *::before {
-    margin: 0;
     padding: 0;
     box-sizing: inherit;
   }
@@ -82,20 +83,15 @@
     font-size: 62.5%;
   }
   
-  .cart {
-    width: 250px;
-    float: right;
-    text-align: center;
-    border: 1px solid rgb(158, 13, 13);
-    overflow-y: scroll;
-    height: 100%;
-  }
+ /*table{
+   margin-top: 100px;
+ }
+
+ :placeholder-shown{
+   margin-top:50px;
   
-  
-  
-  .cartImg > img{
-    width: 100px;
-  }
+ }
+  */
   
   body {
     position: relative;

@@ -18,15 +18,15 @@ body {
 
 h2{
     text-align:left;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 a{
-    color: var(--white);
+    color: var(--purple);
 }
 
 label{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 * {
     box-sizing: border-box;
@@ -65,9 +65,9 @@ label{
 }
 
 .container {
-    background-color:var(--purple);
+    background-color:var(--white);
     padding: 3px 18px 13px 18px;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 3px;
     box-shadow: 0 0 2rem 0 rgba(168, 180, 194, 0.37);
 }
@@ -93,8 +93,8 @@ label {
 }
 
 .btn {
-    background-color: #01BAEF;
-    color: white;
+    background-color:var(--purple);
+    color: rgb(255, 255, 255);
     padding: 12px;
     margin: 10px 0;
     border: none;
@@ -107,18 +107,18 @@ label {
 }
 
 .btn:hover {
-    background-color: #0CBABA;
+    background-color: rgb(132, 0, 255);
 }
 
 
 
 hr {
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 span.price {
     float: right;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns 
