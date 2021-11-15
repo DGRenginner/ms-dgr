@@ -52,9 +52,9 @@ function cadastraUsuario() {
         console.log("Conta criada com sucesso!")
 
       } if (xhr.status == 409) {
-        console.log("Já existe um cadastro com esse e-mail.")
+        alert("Já existe um cadastro com esse e-mail.")
       } else if (xhr.status != 200 && xhr.status != 409){
-        console.log("Ocorreu algum erro durante o processamento. Tente novamente!")
+        alert("Ocorreu algum erro durante o processamento. Tente novamente!")
       }
         console.log(xhr.responseText);
      
@@ -82,12 +82,11 @@ function login() {
   event.preventDefault()
   let xhr = new XMLHttpRequest();
   let dgr = "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin";
+  
 
 
   let email = document.getElementById("email").value
   let senha = document.getElementById("senha").value
-  localStorage.setItem(email, 'value');
-  let myItem = localStorage.getItem(email);
   console.log(email)
   console.log(senha)
  
@@ -105,13 +104,15 @@ function login() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
-
+        alert("Olá Giovanni");
+        location.href = "index.html";
       }else if (xhr.status == 204) {
-        console.log("Não identificamos um cadastro com esse e-mail. Gostaria de se cadastrar agora mesmo?")
+        alert("Não identificamos um cadastro com esse e-mail. Gostaria de se cadastrar agora mesmo?");
+        location.href = "cadastro.html";
       }else if (xhr.status == 203) {
-        console.log("A senha não coincide com a que encontramos. Deseja recuperar sua senha?")
+        alert("A senha não coincide com a que encontramos. Deseja recuperar sua senha?")
       } else {
-        console.log("Ocorreu algum erro durante o processamento. Tente novamente!")
+        alert("Ocorreu algum erro durante o processamento. Tente novamente!")
       }
         console.log(xhr.responseText);
      
@@ -125,4 +126,3 @@ function login() {
   console.log(xhr.responseText)
   
 }
-/* Adicionar form action para direcioar para pagina e incluir alert para conta criada com sucesso e etc */

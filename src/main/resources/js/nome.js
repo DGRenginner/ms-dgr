@@ -19,7 +19,7 @@ const carregarProdutos = async () => {
           <div class="product-header">
             <img src=" ${val.urlImagem}" class='small' alt="product">
           </div>
-          <div class="product-footer">
+          <div class="product-item">
             <h3<span> ${val.nome}</span></h3>
             <h4><span> ${val.marca}</span></h4>
             <div class="rating">
@@ -73,7 +73,7 @@ window.onload = () => {
 function addCarrinho(id) {
 
     let xhr = new XMLHttpRequest();
-    let dgr = ('http://localhost:8081/carrinhos/criarAtualizarCarrinho');
+    let dgr = ('https://ms-dgr.herokuapp.com/carrinhos/criarAtualizarCarrinho');
 
     console.log(id)
 
@@ -142,17 +142,6 @@ function login() {
   }
 
 
-/*function addCarrinho(){
-    event.preventDefault()
-    let xhr = new XMLHttpRequest();
-    let dgr = "https://ms-dgr.herokuapp.com/carrinhos/criarAtualizarCarrinho";
-
-    document.getElementById("add-cart").addEventListener("click",pag)
-
-
-    xhr.open('POST', dgr, true);
-    xhr.setRequestHeader("Content-type", "application/json")
-    xhr.send(JSON.stringify(sessionStorage))
-
-    window.addEventListener("load", addCarrinho)
-}*/
+function redireciona(){
+  location.href = "checkout.html";
+}
