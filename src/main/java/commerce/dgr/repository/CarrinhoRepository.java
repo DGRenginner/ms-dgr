@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface CarrinhoRepository extends CrudRepository<Carrinho, Long> {
 
     Carrinho findByIdPessoa(Long idPessoa);
+    Iterable<Carrinho> findAllByIdPessoa(Long idPessoa);
+
 }

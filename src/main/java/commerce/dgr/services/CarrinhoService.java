@@ -12,7 +12,6 @@ import commerce.dgr.factory.CarrinhoRepresentationFactory;
 import commerce.dgr.factory.ItemCarrinhoFactory;
 import commerce.dgr.repository.CarrinhoRepository;
 import commerce.dgr.repository.ItemCarrinhoRepository;
-import commerce.dgr.repository.ProdutoRepository;
 import commerce.dgr.representation.CarrinhoRepresentation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -94,7 +93,18 @@ public class CarrinhoService {
     }
 
     private void atualizarItensCarrinho(Map<Produto, Integer> mapProdutoQtd, Carrinho carrinho) {
-        mapProdutoQtd.forEach((produto, integer) -> itemCarrinhoRepository.save(new ItemCarrinho(produto, integer, carrinho.getId())));
+        mapProdutoQtd.forEach((produto, quantidade) -> verificaItensCarrinho(produto, quantidade, carrinho)
+        );
+    }
+
+    private void verificaItensCarrinho(Produto produto, Integer quantidade, Carrinho carrinho) {
+        ItemCarrinho itemCarrinho = itemCarrinhoRepository.findByIdCarrinhoAndProduto(carrinho.getId(), produto.getId());
+        if (nonNull(itemCarrinho)) {
+            itemCarrinho.setQuantidade(quantidade);
+            itemCarrinhoRepository.save(itemCarrinho);
+        } else {
+            itemCarrinhoRepository.save(new ItemCarrinho(produto, quantidade, carrinho.getId()));
+        }
     }
 
     private List<ItemCarrinho> converterMapParaList(Map<Produto, Integer> mapProdutoQtd, Carrinho carrinho) {
@@ -128,11 +138,15 @@ public class CarrinhoService {
 
     @Transactional
     public void deletarCarrinho(Pessoa pessoa) {
-        Carrinho carrinho = carrinhoRepository.findByIdPessoa(pessoa.getId());
-        if (nonNull(carrinho)) {
-            itemCarrinhoRepository.deleteByIdCarrinho(carrinho.getId());
-            carrinhoRepository.deleteById(carrinho.getId());
-        }
+        Iterable<Carrinho> iterable = carrinhoRepository.findAllByIdPessoa(pessoa.getId());
+        iterable.forEach(carrinho ->
+                deletarCarrinhoEItens(carrinho.getId())
+        );
+    }
+
+    private void deletarCarrinhoEItens(Long idCarrinho) {
+        itemCarrinhoRepository.deleteByIdCarrinho(idCarrinho);
+        carrinhoRepository.deleteById(idCarrinho);
     }
 
     public CarrinhoRepresentation consultarCarrinho(Pessoa pessoa) {

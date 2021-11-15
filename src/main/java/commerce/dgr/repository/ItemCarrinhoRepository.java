@@ -8,4 +8,10 @@ public interface ItemCarrinhoRepository extends CrudRepository<ItemCarrinho, Lon
     Iterable<ItemCarrinho> findByIdCarrinho(Long codigo);
 
     void deleteByIdCarrinho(Long codigo);
+
+    ItemCarrinho findByIdCarrinhoAndProduto(Long idCarrinho, Long idProduto);
+
+
+//    ItemCarrinho findByIdProdutoAndIdCarrinho(Integer idProduto, Integer idCarrinho);
+
 }
