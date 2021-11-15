@@ -63,7 +63,7 @@ public class CarrinhoService {
             ItemCarrinho itemCarrinho = ItemCarrinhoFactory.criaItemCarrinho(carrinho.getId(), produto, dto.getQuantidade());
             itemCarrinhoRepository.save(itemCarrinho);
 
-            return CarrinhoRepresentationFactory.criaItemCarrinho(pessoa, Collections.singletonList(itemCarrinho), produto.getPreco());
+            return CarrinhoRepresentationFactory.criaItemCarrinho(pessoa, Collections.singletonList(itemCarrinho), produto.getPreco(), carrinho);
 
         } else {
             return adicionarItemCarrinho(dto, carrinho, pessoa, produto);
@@ -118,7 +118,6 @@ public class CarrinhoService {
 
         Map<Produto, Integer> mapProdutoQtd = new HashMap<>();
         itensCarrinho.forEach(itemCarrinho -> verificaDadosProdutoMap(itemCarrinho, mapProdutoQtd));
-
         return mapProdutoQtd;
     }
 
@@ -129,11 +128,6 @@ public class CarrinhoService {
         } else {
             mapProdutoQtd.put(produto, itemCarrinho.getQuantidade());
         }
-    }
-
-
-    private void adicionaQtd(CriaCarrinhoParaClienteDTO dto, ItemCarrinho itemCarrinho) {
-        itemCarrinho.setQuantidade(itemCarrinho.getQuantidade() + dto.getQuantidade());
     }
 
     @Transactional
@@ -156,7 +150,6 @@ public class CarrinhoService {
             List list = IteratorUtils.toList(itensCarrinho.iterator());
             return CarrinhoRepresentation.builder().pessoa(pessoa).valorTotal(carrinho.getValorTotal()).itensCarrinho(list).build();
         }
-
         return null;
     }
 
@@ -173,7 +166,6 @@ public class CarrinhoService {
                 }
             }
         }
-
         List list = IteratorUtils.toList(itensCarrinho.iterator());
         return CarrinhoRepresentation.builder().pessoa(pessoa).itensCarrinho(list).build();
     }
