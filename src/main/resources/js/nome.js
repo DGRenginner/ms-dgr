@@ -59,7 +59,7 @@ const carregarProdutos = async () => {
 
 
     let items = "items";
-    localStorage.setItem(email, 'value')
+//    localStorage.setItem(email, 'value')
     console.log(dados)
 }
 
