@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel</title>
+    <link rel="stylesheet" href="estilo/painel.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <input type="checkbox" name="" id="menu-toggle">
+
+        <div class="sidebar">
+            <div class="brand">
+                <h3>
+                    <span class="lab la-untappd"></span>
+                    Painel
+                </h3>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url(img/Giovanni.jpg);"></div>
+                <div class="profile-info">
+                    <h2>Giovanni Gonçalves</h2>
+                    <small>Web Developer</small>
+                </div>
+                <div class="profile-action">
+                    <a href="" class="btn btn-white">
+                        <span class="las la-coins"></span>
+                        R$ 3.000
+                    </a>
+                </div>
+                <div class="profile-icons">
+                    <span class="las la-user"></span>
+                    <span class="las la-comment-alt"></span>
+                    <span class="las la-file-invoice"></span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-item">
+                    <a href="" class="active">
+                        <span class="las la-home"></span>
+                        <Span>Home</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-project-diagram"></span>
+                        <Span>Projetos</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-tasks"></span>
+                        <Span>Tarefas</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-columns"></span>
+                        <Span>Trello</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-users-cog"></span>
+                        <Span>Admin</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-user-ninja"></span>
+                        <Span>Perfil</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-file-invoice"></span>
+                        <Span>Faturas</Span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="">
+                        <span class="las la-cogs"></span>
+                        <Span>Atalhos</Span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Olá Giovanni</h3>
+                <p>Completar com texto, falar sobre voce, tarefas entre outros
+                    que voce queria expor no painel</p>
+                <a href="" class="btn btn-block btn-white">Iniciar</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                <div class="head-icons">
+                    <span class="las la-search"></span>
+                    <span class="las la-comment-alt"></span>
+                    <span class="las la-bell"></span>
+                    <div class="head-avatar">
+                        <div class="avatar" style="background-image: url(img/Giovanni.jpg);">
+                        </div>
+                        <span>Giovanni Gonçalves</span>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="page-header">
+                    <h1>Rotina Matinal</h1>
+                    <small>Tenha um Bom Dia</small>
+                </div>
+                <div class="analystics">
+                    <div class="card engage-card">
+                        <div class="card-head">
+                            Engajamento
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrapper">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card emails-card">
+                        <div class="card-head">
+                            Compras Outubro
+                        </div>
+                        <div class="card-body">
+                            <div id="emailChart"></div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="emais-info">
+                                <div class="email-stat">
+                                    <span class="status bg-danger"></span>
+                                    <span>30 não enviados</span>
+                                </div>
+                                <div class="email-stat">
+                                    <span class="status bg-warning"></span>
+                                    <span>30 aberto</span>
+                                </div>
+                                <div class="email-stat">
+                                    <span class="status bg-sucess"></span>
+                                    <span>30 sucesso</span>
+                                </div>
+                                <div class="email-stat">
+                                    <span class="status bg-danger"></span>
+                                    <span>SMTP error</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        var options = {
+            chart: {
+                type: 'line',
+                height: "280px",
+                fontFamily: "Nunito",
+                toolbar: {
+                    show: false,
+                }
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 8,
+                colors: ["#6e00FF"],
+            },
+            markers: {
+                size: 8,
+                colors: ["#6e00FF"],
+            },
+            grid: {
+                strokeDashArray: 10,
+            },
+            series: [{
+                name: 'engajamento',
+                data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+            }],
+            xaxis: {
+                categories: ["Feb", "Mar", "Abr", "Mar", "Jun", "Jul", "Ago", "Set", "Out"]
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+
+        //Radial bar Chart
+        let optionsRadial = {
+            series: [50],
+            chart: {
+                height: 280,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hellow: {
+                        size: '60%',
+                    },
+                    dataLabels: {
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            formatter: function (val) {
+                                return parseInt(val);
+                            },
+                            color: '#777',
+                            fontSize: '40px',
+                            fontWeight: 600,
+                        }
+                    }
+                }
+            },
+            stroke: {
+                lineCap: "round",
+            },
+            fill: {
+                colors: ["#FFB100"],
+            },
+            labels: [""]
+        };
+
+        let chartRadial = new ApexCharts(document.querySelector("#emailChart"),
+            optionsRadial);
+        chartRadial.render();
+    </script>
+</body>
+
+</html>

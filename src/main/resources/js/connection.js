@@ -1,58 +1,128 @@
 function fazPost(url, body) {
 
-  console.log("Body=", body) 
-    var xhr = new XMLHttpRequest();
-    request.open("post", url, true)
-    request.setRequestHeader("Content-type", "application/json")
-    request.send(JSON.stringify(body))
-  
-    request.onload = function() {
-      console.log(this.responseText)
-    }
+  console.log("Body=", body)
+  var xhr = new XMLHttpRequest();
+  request.open("post", url, true)
+  request.setRequestHeader("Content-type", "application/json")
+  request.send(JSON.stringify(body))
 
-    return request.responseText
+  request.onload = function () {
+    console.log(this.responseText)
+  }
+
+  return request.responseText
 }
 
-function cadastraUsuario(){
+function cadastraUsuario() {
   event.preventDefault()
   let xhr = new XMLHttpRequest();
 
-  let cpf_cnpj = document.getElementById("cpf_cnpj").value
+  let cpfcnpj = document.getElementById("cpfcnpj").value
   let email = document.getElementById("email").value
   let nome = document.getElementById("nome").value
   let senha = document.getElementById("senha").value
-  let confirmasenha = document.getElementById("confirmasenha").value
   let telefone = document.getElementById("telefone").value
+  let genero = document.querySelector('input[name="genero"]:checked').value
 
-  console.log(cpf_cnpj)
+  console.log(cpfcnpj)
   console.log(email)
   console.log(nome)
   console.log(senha)
-  console.log(confirmasenha)
   console.log(telefone)
+  console.log(genero)
 
   body = {
-    "cpf_cnpj": cpf_cnpj,
-    "email" : email,
-    "nome" : nome,
-    "senha" : senha,
-    "confirmasenha" : confirmasenha,
-    "telefone" : telefone,
+    "cpfCnpj": cpfcnpj,
+    "email": email,
+    "nome": nome,
+    "senha": senha,
+    "telefone": telefone,
+    "tipoGenero": genero,
+    "tipoAcesso": "CLIENTE"
   }
 
   console.log(JSON.stringify(body))
   console.log(xhr)
 
- xhr.onreadystatechange = function() {
-   	if (xhr.readyState == 4) {
-   		if (xhr.status = 200)
-   			console.log(xhr.responseText);
-   		}
-   	}
 
-   	xhr.open('POST', "https://ms-dgr.herokuapp.com/pessoas/criarPessoa", true);
-   	xhr.setRequestHeader("Content-type", "application/json")
-    xhr.send(JSON.stringify(body))
 
-   console.log(xhr.responseText)
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        console.log("Conta criada com sucesso!")
+
+      } if (xhr.status == 409) {
+        alert("Já existe um cadastro com esse e-mail.")
+      } else if (xhr.status != 200 && xhr.status != 409){
+        alert("Ocorreu algum erro durante o processamento. Tente novamente!")
+      }
+        console.log(xhr.responseText);
+     
+    } 
   }
+
+  xhr.open('POST', "https://ms-dgr.herokuapp.com/pessoas/criarPessoa", true);
+  xhr.setRequestHeader("Content-type", "application/json")
+  xhr.send(JSON.stringify(body))
+
+  console.log(xhr.responseText)
+  alert("Conta Criada com Sucesso") 
+}
+
+function redireciona(){
+  location.href = "index.html";
+}
+
+
+
+
+
+
+function login() {
+  event.preventDefault()
+  let xhr = new XMLHttpRequest();
+  let dgr = "https://ms-dgr.herokuapp.com/pessoas/efetuarLogin";
+  
+
+
+  let email = document.getElementById("email").value
+  let senha = document.getElementById("senha").value
+  console.log(email)
+  console.log(senha)
+ 
+
+  body = {
+    "email": email,
+    "senha": senha,
+  
+  }
+
+  console.log(JSON.stringify(body))
+  console.log(xhr)
+
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        alert("Olá Giovanni");
+        location.href = "index.html";
+      }else if (xhr.status == 204) {
+        alert("Não identificamos um cadastro com esse e-mail. Gostaria de se cadastrar agora mesmo?");
+        location.href = "cadastro.html";
+      }else if (xhr.status == 203) {
+        alert("A senha não coincide com a que encontramos. Deseja recuperar sua senha?")
+      } else {
+        alert("Ocorreu algum erro durante o processamento. Tente novamente!")
+      }
+        console.log(xhr.responseText);
+     
+    } 
+  }
+
+  xhr.open('POST', dgr, true);
+  xhr.setRequestHeader("Content-type", "application/json")
+  xhr.send(JSON.stringify(body))
+
+  console.log(xhr.responseText)
+  
+}

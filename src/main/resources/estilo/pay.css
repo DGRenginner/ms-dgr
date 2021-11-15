@@ -1,3 +1,15 @@
+:root{
+    --white: #fff;
+    --black: #222;
+    --pink: #f60091;
+    --purple: #8c52ff;
+    --grey: #444;
+    --grey2: #959595;
+    --grey-alt: #d1e2e9;
+    --yellow: #ffd800;
+    --green: #59b210;
+  }
+
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 *
 {
@@ -12,7 +24,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-background: linear-gradient(#73c1ff,#fff);
+background: linear-gradient(#c8a2c8,#fff);
 }
 
 .pagamento
@@ -41,7 +53,7 @@ background: linear-gradient(#73c1ff,#fff);
     height: 70%;
     width: 100%;
     border-radius: 25px;
-    background: linear-gradient(225deg,#2196f3,#ff4efd);
+    background: linear-gradient(225deg,#c8a2c8,#ff4efd);
 }
 .pagamento .card
 {    
@@ -112,7 +124,7 @@ form
 } 
 .inputBox span
 {
-    color: #089cff;
+    color: var(--purple);
     font-size: 1.1em;
 }
 .inputBox input

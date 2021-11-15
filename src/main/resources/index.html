@@ -39,7 +39,7 @@
       <a href="#home">Home</a>
       <a href="computadores.html">Computadores</a>
       <a href="perifericos.html">Periféricos</a>
-      <a href="#categories">Cadeiras</a>
+      <a href="cadeiras.html">Cadeiras</a>
   </nav>
 
   <div class="icons">
@@ -54,13 +54,15 @@
       <label for="search-box" class="fas fa-search"></label>
   </form>
 
-  <form action="" class="login-form">
+  <form onsubmit="login()"
+     class="login-form">
       <h3>Entre Agora</h3>
-      <input type="email" placeholder="Seu e-mail" class="box">
-      <input type="password" placeholder="Sua senha" class="box">
+      <input id="email" type="email" placeholder="Seu e-mail"  class="box">
+      <input id="senha" type="password" placeholder="Sua senha" class="box">
       <p>Esqueceu a senha? <a href="#">clique aqui</a></p>
       <p>não tem uma conta? <a href="cadastro.html">crie agora</a></p>
-      <input type="submit" value="Login" class="btn">
+      <input type="submit" onclick="login()" value="Login" class="btn">
+    </div>
   </form>
 
 </header>
@@ -142,7 +144,7 @@
             <div class="content">
               <h2>PC'Gamers</h2>
               <span>16 Produtos</span>
-              <a href="#">Compre agora</a>
+              <a href="computadores.html">Compre agora</a>
             </div>
           </div>
   
@@ -151,7 +153,7 @@
             <div class="content">
               <h2>Periféricos</h2>
               <span>45 Produtos</span>
-              <a href="#">Compre agora</a>
+              <a href="perifericos.html">Compre agora</a>
             </div>
           </div>
   
@@ -160,7 +162,7 @@
             <div class="content">
               <h2>Cadeiras</h2>
               <span>40 Produtos</span>
-              <a href="#">Compre agora</a>
+              <a href="cadeiras.html">Compre agora</a>
             </div>
           </div>
   
@@ -195,7 +197,7 @@
         <div class="product-center container">
           <div class="product">
             <div class="product-header">
-              <img src="./img/banner4.jpg" class='small' alt="product">
+              <img src="./img/banner4.png" class='small' alt="product">
             </div>
             <div class="product-footer">
               <h3>COMPUTADOR MANCER GAMER, AMD RYZEN 5 3350G, GEFORCE GTX 750 TI 4GB, 8GB DDR4, SSD 240GB</h3>
@@ -417,18 +419,6 @@
     </section>
 
      <!-- Latest Products -->
-     <div class="section latest-products" id="new">
-      <div class="title-container">
-        <div class="section-titles">
-          <div class="section-title active" data-id="latest">
-            <span class="dot"></span>
-            <h1 class="primary-title">Produtos Recentes</h1>
-          </div>
-        </div>
-      </div>
-      <div class="latest-center product-center container"></div>
-    </section>
-
 
     <!-- Facility -->
     <section class="facility section" id="facility">
@@ -512,7 +502,7 @@
             <a href="#">Sobre Nós</a>
             <a href="#">Politíca de Privacidade</a>
             <a href="#">Termos & Condições</a>
-            <a href="#">Contate-Nos</a>
+            <a href="faq.html">FAQ</a>
             <a href="#">Inicio</a>
           </div>
           <div class="footer-center">
@@ -557,15 +547,16 @@
     <!-- End Footer -->
 
     <!-- Glidejs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
-    <!-- Scripts 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script> 
+
     <script src="js/index.js"></script> 
     
-    <script src="js/product.js"></script> 
+  <!--<script src="js/product.js"></script> -->
     <script src="js/slider.js"></script>
-    -->
-    <script src="js/script.js"></script>
-    
+  
+    <script src="js/script.js"></script> 
+
+    <script src="js/connection.js"></script>
     
     
 </body>
